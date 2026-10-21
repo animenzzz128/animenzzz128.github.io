@@ -167,10 +167,10 @@ h3 { font: 700 clamp(1.35rem, 2.5vw, 1.8rem)/1.15 var(--f-display); letter-spaci
 
 /* case studies */
 .case { display: grid; grid-template-columns: 11rem minmax(0,1fr); gap: 24px; padding-block: 32px; border-top: 1px solid var(--rule); }
-@media (max-width: 720px) { .case { grid-template-columns: 1fr; gap: 12px; } }
+@media (max-width: 720px) { .case { grid-template-columns: minmax(0,1fr); gap: 12px; } }
 .case-meta { font: 400 .8rem/1.6 var(--f-mono); color: var(--muted); display: grid; gap: 4px; align-content: start; }
 .case-meta strong { color: var(--ink); font-weight: 500; }
-.case-body { display: grid; gap: 22px; min-width: 0; }
+.case-body { display: grid; grid-template-columns: minmax(0,1fr); gap: 22px; min-width: 0; }
 .case-sub { font: 500 1.02rem/1.55 var(--f-body); color: var(--muted); margin: 6px 0 0; max-width: 64ch; }
 .prm { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border: 1px solid var(--rule); border-radius: 12px; background: var(--sheet); margin: 0; }
 .prm > div { padding: 16px 18px; min-width: 0; }
@@ -179,7 +179,7 @@ h3 { font: 700 clamp(1.35rem, 2.5vw, 1.8rem)/1.15 var(--f-display); letter-spaci
 .prm dd { margin: 0; font-size: .95rem; }
 @media (max-width: 760px) { .prm { grid-template-columns: 1fr; } .prm > div + div { border-left: 0; border-top: 1px solid var(--rule); } }
 .split { display: grid; grid-template-columns: minmax(0,1fr) minmax(0, 420px); gap: 24px; align-items: start; }
-@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .split { grid-template-columns: minmax(0,1fr); } }
 .decisions { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
 .decisions li { display: grid; grid-template-columns: 1.5rem minmax(0,1fr); gap: 6px; }
 .decisions li::before { content: "✓"; font: 500 .9rem/1.65 var(--f-mono); color: var(--ok); }
@@ -299,7 +299,7 @@ td.win { font-weight: 500; }
           <dl>
             <div><dt><span class="en">Graduating</span><span class="zh">毕业</span></dt><dd><span class="en">June 2027 · Yale SOM (STEM)</span><span class="zh">2027 年 6 月 · 耶鲁管理学院（STEM）</span></dd></div>
             <div><dt><span class="en">Location</span><span class="zh">地点</span></dt><dd><span class="en">New Haven, CT · open to North America &amp; China</span><span class="zh">美国纽黑文 · 北美与国内均可</span></dd></div>
-            <div><dt><span class="en">Building</span><span class="zh">在做</span></dt><dd><span class="en"><a href="#toutoule">TouTouLe</a> v0.2, an AI job-triage agent<br><a href="#dayweave">Dayweave</a>, an AI daily planner</span><span class="zh"><a href="#toutoule">投投乐</a> v0.2，AI 求职筛选 Agent<br><a href="#dayweave">Dayweave</a>，AI 日程助手</span></dd></div>
+            <div><dt><span class="en">Building</span><span class="zh">在做</span></dt><dd><span class="en"><a href="#toutoule">TouTouLe</a> v0.2, an AI job-triage agent<br><a href="#dayweave">Dayweave</a> v1.5.5, an AI daily planner</span><span class="zh"><a href="#toutoule">投投乐</a> v0.2，AI 求职筛选 Agent<br><a href="#dayweave">Dayweave</a> v1.5.5，AI 日程助手</span></dd></div>
           </dl>
           <div class="now-nums">
             <div><b>+1.5pp</b><span class="en">MBP GMV penetration, TikTok Shop</span><span class="zh">TikTok Shop MBP GMV 渗透率</span></div>
@@ -339,7 +339,7 @@ td.win { font-weight: 500; }
         <h2><span class="en">Projects</span><span class="zh">个人项目</span></h2>
         <ul>
           <li><b><a href="#toutoule">投投乐 TouTouLe</a></b><span><span class="en">AI agent that triages job postings with evidence</span><span class="zh">带证据的招聘信息筛选 AI Agent</span></span><span class="num"><span class="en">−70% hallucinations · 435 tests</span><span class="zh">幻觉 −70% · 435 项测试</span></span></li>
-          <li><b><a href="#dayweave">Dayweave</a></b><span><span class="en">AI daily planner that acts only on approval</span><span class="zh">只在获批后行动的 AI 日程助手</span></span><span class="num"><span class="en">v1.5.5 · Node.js + SQLite</span><span class="zh">v1.5.5 · Node.js + SQLite</span></span></li>
+          <li><b><a href="#dayweave">Dayweave</a></b><span><span class="en">AI daily planner that proposes and waits for approval</span><span class="zh">只提建议、获批才动手的 AI 日程助手</span></span><span class="num"><span class="en">v1.5.5 · open source · live demo</span><span class="zh">v1.5.5 · 已开源 · 在线 Demo</span></span></li>
         </ul>
       </div>
       <div class="card">
@@ -479,26 +479,41 @@ td.win { font-weight: 500; }
       <article class="case" id="dayweave">
         <div class="case-meta">
           <strong>Dayweave</strong>
-          <span><span class="en">Builder &amp; product owner, solo</span><span class="zh">产品负责人兼开发（独立完成）</span></span>
+          <span><span class="en">Founder &amp; product owner, solo</span><span class="zh">发起人兼产品负责人（独立完成）</span></span>
           <span><span class="en">v1.5.5 · Oct 2026</span><span class="zh">v1.5.5 · 2026.10</span></span>
-          <span>Node.js · SQLite · Google Calendar · Gmail</span>
+          <span>Node.js · SQLite · React · TypeScript</span>
         </div>
         <div class="case-body">
           <div>
-            <h3><span class="en">An AI planner that never acts without your approval</span><span class="zh">一个未经你批准绝不动手的 AI 日程助手</span></h3>
-            <p class="case-sub"><span class="en">Dayweave turns coursework, calendar and inbox evidence into a reviewable daily plan. It keeps what a source says, what the assistant recommends and what you approve visibly separate.</span><span class="zh">Dayweave 把课程、日历和邮件里的信息整理成一份可审阅的每日计划，并始终把“来源说了什么”“助手建议什么”“你批准了什么”分开展示。</span></p>
+            <h3><span class="en">An AI daily planner that proposes, and waits for your approval</span><span class="zh">只提建议、等你批准才动手的 AI 日程助手</span></h3>
+            <p class="case-sub"><span class="en">Most AI assistants act first and explain later. Dayweave turns coursework, calendar and inbox evidence into a daily plan you can review, and keeps what a source says, what the assistant recommends and what you approve visibly separate.</span><span class="zh">多数 AI 助手先动手、后解释。Dayweave 把课程、日历和邮件里的信息整理成一份可以审阅的每日计划，并始终把“来源说了什么”“助手建议什么”“你批准了什么”分开展示。</span></p>
           </div>
+          <dl class="prm">
+            <div><dt><span class="en">Problem</span><span class="zh">问题</span></dt><dd><span class="en">Deadlines and requirements were spread across Canvas, syllabi, calendar and email, and a planner that writes to your calendar on its own is hard to trust.</span><span class="zh">截止日期和作业要求散落在 Canvas、课程大纲、日历和邮件里；而一个会自己往日历里写东西的助手，很难让人放心。</span></dd></div>
+            <div><dt><span class="en">My role</span><span class="zh">我的角色</span></dt><dd><span class="en">Everything: phased roadmap, data contract, decision log, code, tests, privacy checks and releases.</span><span class="zh">全部独立完成：分阶段路线图、数据契约、决策日志、开发、测试、隐私检查和版本发布。</span></dd></div>
+            <div><dt><span class="en">Outcome</span><span class="zh">结果</span></dt><dd><span class="en">v1.5.5 released. I run it on my own coursework from a pinned stable build, and the repo and a bilingual demo are public.</span><span class="zh">v1.5.5 已发布。我自己用固定的稳定版本管理课业；代码仓库和中英双语 Demo 均已公开。</span></dd></div>
+          </dl>
           <div class="flow" aria-label="Source, recommendation, approval">
             <div><small><span class="en">1 · Source</span><span class="zh">1 · 来源</span></small><p><span class="en">Canvas, syllabi, Google Calendar and a read-only Gmail snapshot, each with its collection time and coverage.</span><span class="zh">Canvas、课程大纲、Google 日历和只读的 Gmail 快照，每一项都标明采集时间和覆盖范围。</span></p></div>
             <div><small><span class="en">2 · Recommendation</span><span class="zh">2 · 建议</span></small><p><span class="en">Deterministic focus blocks: 09:00–24:00, at most 90 minutes each, at least 20% of the day left free.</span><span class="zh">确定性的专注时段：09:00–24:00 之间，每段不超过 90 分钟，每天至少留 20% 空闲。</span></p></div>
-            <div><small><span class="en">3 · Approval</span><span class="zh">3 · 批准</span></small><p><span class="en">Nothing is written to a calendar until you approve an exact, versioned request in chat.</span><span class="zh">只有你在对话中批准了某个具体版本的请求，才会写入日历。</span></p></div>
+            <div><small><span class="en">3 · Approval</span><span class="zh">3 · 批准</span></small><p><span class="en">Nothing is written to a calendar until you approve an exact, versioned request. The app itself never writes.</span><span class="zh">只有你批准了某个具体版本的请求，才会写入日历；应用本身从不直接写入。</span></p></div>
           </div>
           <ul class="decisions">
             <li><span class="en"><b>Stale data looks stale.</b> A failed read keeps the last good records and says so, instead of showing an empty inbox or a clear day.</span><span class="zh"><b>过期数据要看得出过期。</b>读取失败时保留上一次的有效记录并明确标注，而不是显示成“收件箱为空”或“今天没事”。</span></li>
             <li><span class="en"><b>Proposals fail closed.</b> Requests that overlap known events, fall outside verified coverage, sit in the past or reuse an action ID are rejected.</span><span class="zh"><b>拿不准就拒绝。</b>与已知日程冲突、超出已验证范围、时间已过或重复使用操作编号的请求一律拒绝。</span></li>
+            <li><span class="en"><b>Public without personal data.</b> The demo runs on a fictional student in the browser, and a privacy check scans every tracked file and the build before release.</span><span class="zh"><b>公开但不暴露个人数据。</b>Demo 使用虚构学生的数据、完全在浏览器内运行；每次发布前用隐私检查扫描所有入库文件和构建产物。</span></li>
             <li><span class="en"><b>Shipped in scoped releases.</b> Phase 6 went out as four features, each with its own issue, PR and acceptance guide.</span><span class="zh"><b>小步发布。</b>Phase 6 的四个功能各自对应独立的 issue、PR 和验收文档。</span></li>
           </ul>
-          <p class="note"><span class="en">The repository is private because it runs on personal data. A walkthrough is available on request.</span><span class="zh">因为涉及个人数据，代码仓库为私有，可应邀演示。</span></p>
+          <figure class="shot">
+            <img src="img/dayweave.jpg" width="1920" height="960" alt="Dayweave Today view: a timeline with calendar events and dashed AI-proposed focus blocks, a sourced daily brief and three priorities" loading="lazy">
+            <figcaption><span class="en">The Today view in the public demo. Dashed blocks are AI proposals; they reach the calendar only after approval.</span><span class="zh">公开 Demo 的“今天”页面。虚线框是 AI 建议的时段，只有批准后才会写入日历。</span></figcaption>
+          </figure>
+          <div class="links">
+            <a href="https://animenzzz128.github.io/dayweave/" target="_blank" rel="noopener"><span class="en">Live demo</span><span class="zh">在线 Demo</span> ↗</a>
+            <a href="https://github.com/animenzzz128/dayweave" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://github.com/animenzzz128/dayweave/blob/main/docs/roadmap.md" target="_blank" rel="noopener"><span class="en">Roadmap</span><span class="zh">路线图</span> ↗</a>
+            <a href="https://github.com/animenzzz128/dayweave/blob/main/docs/decisions.md" target="_blank" rel="noopener"><span class="en">Decision log</span><span class="zh">决策日志</span> ↗</a>
+          </div>
         </div>
       </article>
     </section>
