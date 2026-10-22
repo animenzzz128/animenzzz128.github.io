@@ -11,9 +11,11 @@ function page(route, m) {
     .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(m.description)}`)
     .replace(/(<meta property="og:title" content=")[^"]*/, `$1${esc(m.title)}`)
     .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(m.description)}`)
+    .replace(/(<meta property="og:image" content=")[^"]*/, `$1https://animenzzz128.github.io${m.image}`)
     .replace(/(<meta property="og:url" content=")[^"]*/, `$1https://animenzzz128.github.io${route === '/' ? '/' : route}`);
 }
 
+writeFileSync('dist/index.html', page('/', meta['/']));
 for (const [route, m] of Object.entries(meta)) {
   if (route === '/') continue;
   mkdirSync(`dist${route}`, { recursive: true });

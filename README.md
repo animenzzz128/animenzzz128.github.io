@@ -22,4 +22,4 @@ npm run build   # checks both languages and types, builds to dist/
 - English and Chinese sit side by side (`.en` / `.zh` spans, or `<T en zh />`); the header toggle sets `data-lang` on `<html>`. `scripts/check-i18n.mjs` fails the build when a block lacks its other language.
 - Page titles and share descriptions live in `src/meta.json`. `scripts/postbuild.mjs` writes an HTML file per route plus `404.html`, so direct links work on GitHub Pages.
 - Old single-page anchors such as `/#dayweave` redirect to the new routes.
-- `public/img/`: photos and project screenshots.
+- `public/img/`: photos and project screenshots. `public/og/`: share-preview images, rendered by `scripts/og/render.cjs`.

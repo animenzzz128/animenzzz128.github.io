@@ -1,26 +1,32 @@
 {
   "/": {
     "title": "Jiaqi (Jacky) Yao",
-    "description": "Jiaqi (Jacky) Yao. Product, strategy and operations. Yale SOM MMS 2027."
+    "description": "Jiaqi (Jacky) Yao. Product, strategy and operations. Yale SOM MMS 2027.",
+    "image": "/og/home.png"
   },
   "/projects": {
     "title": "Projects · Jiaqi (Jacky) Yao",
-    "description": "TouTouLe and Dayweave: two AI products Jiaqi (Jacky) Yao built and uses every day."
+    "description": "TouTouLe and Dayweave: two AI products Jiaqi (Jacky) Yao built and uses every day.",
+    "image": "/og/home.png"
   },
   "/projects/toutoule": {
     "title": "TouTouLe · Jiaqi (Jacky) Yao",
-    "description": "TouTouLe, an AI agent that triages job postings with evidence. Case study by Jiaqi (Jacky) Yao."
+    "description": "TouTouLe, an AI agent that triages job postings with evidence. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/toutoule.png"
   },
   "/projects/dayweave": {
     "title": "Dayweave · Jiaqi (Jacky) Yao",
-    "description": "Dayweave, an AI daily planner that proposes and waits for approval. Case study by Jiaqi (Jacky) Yao."
+    "description": "Dayweave, an AI daily planner that proposes and waits for approval. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/dayweave.png"
   },
   "/experience": {
     "title": "Experience · Jiaqi (Jacky) Yao",
-    "description": "Strategy, consulting and research at TikTok Shop, Deloitte and IQVIA; education at Yale SOM, UBC and Duke."
+    "description": "Strategy, consulting and research at TikTok Shop, Deloitte and IQVIA; education at Yale SOM, UBC and Duke.",
+    "image": "/og/home.png"
   },
   "/about": {
     "title": "About · Jiaqi (Jacky) Yao",
-    "description": "How Jiaqi (Jacky) Yao works, and life outside work."
+    "description": "How Jiaqi (Jacky) Yao works, and life outside work.",
+    "image": "/og/home.png"
   }
 }

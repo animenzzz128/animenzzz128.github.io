@@ -1,3 +1,4 @@
+import { Brief, Reflection } from '../components/Brief';
 import ProjectPage from '../components/ProjectPage';
 
 export default function Dayweave() {
@@ -15,6 +16,11 @@ export default function Dayweave() {
             <h3><span className="en">An AI daily planner that proposes, and waits for your approval</span><span className="zh">只提建议、等你批准才动手的 AI 日程助手</span></h3>
             <p className="case-sub"><span className="en">Most AI assistants act first and explain later. Dayweave turns coursework, calendar and inbox evidence into a daily plan you can review, and keeps what a source says, what the assistant recommends and what you approve visibly separate.</span><span className="zh">多数 AI 助手先动手、后解释。Dayweave 把课程、日历和邮件里的信息整理成一份可以审阅的每日计划，并始终把“来源说了什么”“助手建议什么”“你批准了什么”分开展示。</span></p>
           </div>
+          <Brief items={[
+            { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'A local planner that turns Canvas, syllabi, Google Calendar and Gmail evidence into a daily plan with focus blocks.', zh: '一个本地运行的日程助手，把 Canvas、课程大纲、Google 日历和 Gmail 里的信息整理成带专注时段的每日计划。' } },
+            { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'The app never writes. A calendar change happens only after I approve an exact, versioned request, and the result is read back and checked.', zh: '应用本身从不写入。只有我批准了某个具体版本的请求，才会改日历，并且写完后回读核对。' } },
+            { label: { en: 'Result:', zh: '结果：' }, text: { en: 'v1.5.5 released and in use on my own coursework, with an open-source repo and a bilingual public demo.', zh: 'v1.5.5 已发布，我自己每天在用；代码已开源，并有中英双语的公开 Demo。' } },
+          ]} />
           <dl className="prm">
             <div><dt><span className="en">Problem</span><span className="zh">问题</span></dt><dd><span className="en">Deadlines and requirements were spread across Canvas, syllabi, calendar and email, and a planner that writes to your calendar on its own is hard to trust.</span><span className="zh">截止日期和作业要求散落在 Canvas、课程大纲、日历和邮件里；而一个会自己往日历里写东西的助手，很难让人放心。</span></dd></div>
             <div><dt><span className="en">My role</span><span className="zh">我的角色</span></dt><dd><span className="en">Everything: phased roadmap, data contract, decision log, code, tests, privacy checks and releases.</span><span className="zh">全部独立完成：分阶段路线图、数据契约、决策日志、开发、测试、隐私检查和版本发布。</span></dd></div>
@@ -35,6 +41,10 @@ export default function Dayweave() {
             <img src="/img/dayweave.jpg" width="1920" height="960" alt="Dayweave Today view: a timeline with calendar events and dashed AI-proposed focus blocks, a sourced daily brief and three priorities" loading="lazy" />
             <figcaption><span className="en">The Today view in the public demo. Dashed blocks are AI proposals; they reach the calendar only after approval.</span><span className="zh">公开 Demo 的“今天”页面。虚线框是 AI 建议的时段，只有批准后才会写入日历。</span></figcaption>
           </figure>
+          <Reflection items={[
+            { en: 'Start with deterministic rules and scored checks. An early trial that let the model read raw inputs got deadline boundaries and uncertainty wrong.', zh: '一开始就用确定性规则和可打分的检查。早期让模型直接读原始数据的尝试，在截止时间边界和不确定性上出了错。' },
+            { en: 'Confirm account access before building on a provider. The school Outlook connection was never established, so I moved to Google.', zh: '先确认账号权限，再基于某个服务开发。学校 Outlook 的连接始终没能建立，最后改用了 Google。' },
+          ]} />
           <div className="links">
             <a href="https://animenzzz128.github.io/dayweave/" target="_blank" rel="noopener"><span className="en">Live demo</span><span className="zh">在线 Demo</span> ↗</a>
             <a href="https://github.com/animenzzz128/dayweave" target="_blank" rel="noopener">GitHub ↗</a>
