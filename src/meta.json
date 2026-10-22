@@ -1,0 +1,26 @@
+{
+  "/": {
+    "title": "Jiaqi (Jacky) Yao",
+    "description": "Jiaqi (Jacky) Yao. Product, strategy and operations. Yale SOM MMS 2027."
+  },
+  "/projects": {
+    "title": "Projects · Jiaqi (Jacky) Yao",
+    "description": "TouTouLe and Dayweave: two AI products Jiaqi (Jacky) Yao built and uses every day."
+  },
+  "/projects/toutoule": {
+    "title": "TouTouLe · Jiaqi (Jacky) Yao",
+    "description": "TouTouLe, an AI agent that triages job postings with evidence. Case study by Jiaqi (Jacky) Yao."
+  },
+  "/projects/dayweave": {
+    "title": "Dayweave · Jiaqi (Jacky) Yao",
+    "description": "Dayweave, an AI daily planner that proposes and waits for approval. Case study by Jiaqi (Jacky) Yao."
+  },
+  "/experience": {
+    "title": "Experience · Jiaqi (Jacky) Yao",
+    "description": "Strategy, consulting and research at TikTok Shop, Deloitte and IQVIA; education at Yale SOM, UBC and Duke."
+  },
+  "/about": {
+    "title": "About · Jiaqi (Jacky) Yao",
+    "description": "How Jiaqi (Jacky) Yao works, and life outside work."
+  }
+}
