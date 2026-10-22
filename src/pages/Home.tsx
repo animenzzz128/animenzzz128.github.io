@@ -22,7 +22,7 @@ export default function Home() {
             <Link className="explore-card" to={e.to} key={e.to}>
               <small>0{i + 1}</small>
               <b><T {...e.title} /></b>
-              <span><T {...e.text} /></span>
+              <p><T {...e.text} /></p>
               <em aria-hidden="true">→</em>
             </Link>
           ))}
