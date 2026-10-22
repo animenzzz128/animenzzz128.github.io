@@ -1,4 +1,15 @@
 import { EducationSection } from '../components/EducationSection';
+import T from '../components/T';
+import type { Bi } from '../lang';
+
+/** Tools and methods named in each résumé entry. */
+function Skills({ items }: { items: (string | Bi)[] }) {
+  return (
+    <div className="tags xp-tags" aria-label="Skills used">
+      {items.map((t, i) => <span key={i}>{typeof t === 'string' ? t : <T {...t} />}</span>)}
+    </div>
+  );
+}
 
 export default function Experience() {
   return (
@@ -22,6 +33,7 @@ export default function Experience() {
               <li>选取活动监测指标，从零搭建并维护 50 余份 Excel 看板，分析累计约 20 万条商家、达人、商品及活动数据点，定位表现差异。</li>
               <li>在东南亚六国累计筛选 5,000 余名商家与达人，协同 30 余名当地市场对接人推进活动；目标群体广告收入/GMV 提升 0.5–0.8 个百分点，增量广告收入/增量 GMV 提升 0.2–0.6 个百分点。</li>
             </ul>
+            <Skills items={['Excel', { en: 'KPI design', zh: '指标设计' }, { en: 'Business case', zh: '商业论证' }, { en: 'Seller & creator analytics', zh: '商家与达人分析' }, { en: 'Cross-market coordination', zh: '跨市场协作' }]} />
           </div>
         </div>
         <div className="xp-row">
@@ -36,6 +48,7 @@ export default function Experience() {
               <li>完成 6 份可视化报告，用 Axure 支持 30 余页数字零售平台原型设计，并参与业务分析团队的实施蓝图设计。</li>
               <li>使用 Python、Tableau 清洗并分析 1.8 万余条零售数据，以探索与预测分析支持建材客户两年期业务展望。</li>
             </ul>
+            <Skills items={['Python', 'Tableau', 'Axure', { en: 'Data visualization', zh: '数据可视化' }, { en: 'Predictive analysis', zh: '预测分析' }]} />
           </div>
         </div>
         <div className="xp-row">
@@ -48,6 +61,7 @@ export default function Experience() {
             <ul className="zh">
               <li>分析 12 款药品定价与消费者行为，整理 10 余次专家访谈，结合监管及临床研究支持市场和定价策略评估。</li>
             </ul>
+            <Skills items={[{ en: 'Pricing analysis', zh: '定价分析' }, { en: 'Expert interviews', zh: '专家访谈' }, { en: 'Market research', zh: '市场研究' }]} />
           </div>
         </div>
       </section>

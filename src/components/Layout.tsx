@@ -4,6 +4,7 @@ import meta from '../meta.json';
 import { useLang } from '../lang';
 import Contact from './Contact';
 import T from './T';
+import { track } from '../analytics';
 
 // Sections of the old single-page site, so links already shared keep working.
 const OLD_ANCHORS: Record<string, string> = {
@@ -37,6 +38,7 @@ export default function Layout() {
     const titles = meta as Record<string, { title: string }>;
     const m = titles[pathname.replace(/(.)\/$/, '$1')];
     document.title = (m || titles['/']).title;
+    track({ path: pathname, title: document.title });
     if (hash === '#contact') document.getElementById('contact')?.scrollIntoView();
     else window.scrollTo(0, 0);
   }, [pathname, hash]);

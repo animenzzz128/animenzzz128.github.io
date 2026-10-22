@@ -5,6 +5,7 @@ import { ExperienceCard } from '../components/ExperienceCard';
 import { EducationCard } from '../components/EducationCard';
 import { SkillsCard } from '../components/SkillsCard';
 import T from '../components/T';
+import Testimonials from '../components/Testimonials';
 
 const EXPLORE = [
   { to: '/projects', title: { en: 'Projects', zh: '个人项目' }, text: { en: 'Two AI products with live demos and case studies', zh: '两个 AI 产品，可在线试用，附项目详情' } },
@@ -44,6 +45,7 @@ export default function Home() {
             <EducationCard />
             <SkillsCard />
           </div>
+          <Testimonials />
           <div className="links more">
             <Link to="/experience"><T en="Full experience" zh="完整经历" /> →</Link>
             <Link to="/about"><T en="About me" zh="关于我" /> →</Link>
