@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import meta from '../meta.json';
 import { useLang } from '../lang';
@@ -19,6 +19,15 @@ export default function Layout() {
   const [lang, setLang] = useLang();
   const { pathname, hash } = useLocation();
   const navigate = useNavigate();
+  const [contactInView, setContactInView] = useState(false);
+
+  useEffect(() => {
+    const el = document.getElementById('contact');
+    if (!el || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([e]) => setContactInView(e.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     if (pathname === '/' && OLD_ANCHORS[hash]) navigate(OLD_ANCHORS[hash], { replace: true });
@@ -34,6 +43,7 @@ export default function Layout() {
 
   return (
     <>
+      <a className="skip" href="#top" onClick={(e) => { e.preventDefault(); document.getElementById('top')?.focus(); }}><T en="Skip to content" zh="跳到正文" /></a>
       <header className="bar">
         <div className="wrap">
           <Link className="monogram" to="/">JY<span style={{ color: 'var(--muted)' }}>.</span></Link>
@@ -49,10 +59,11 @@ export default function Layout() {
           </nav>
         </div>
       </header>
-      <main id="top" key={pathname} className="page-enter">
+      <main id="top" tabIndex={-1} key={pathname} className="page-enter">
         <Outlet />
       </main>
       <Contact />
+      <a className="contact-fab" href="#contact" hidden={contactInView}><T en="Contact" zh="联系我" /></a>
     </>
   );
 }

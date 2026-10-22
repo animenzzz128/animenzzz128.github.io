@@ -1,3 +1,4 @@
+import { Brief, Reflection } from '../components/Brief';
 import ProjectPage from '../components/ProjectPage';
 
 export default function TouTouLe() {
@@ -15,6 +16,11 @@ export default function TouTouLe() {
             <h3><span className="en">An AI agent that triages job postings with evidence</span><span className="zh">带证据的招聘信息筛选 AI Agent</span></h3>
             <p className="case-sub"><span className="en">A scheduled prompt gives you a summary you have to trust. TouTouLe gives you a decision record you can verify, with a measured error rate on the fields where an error costs an opportunity.</span><span className="zh">定时提示词只能给你一份需要信任的摘要；投投乐给你一份可以核验的决策记录，并且在“出错就会错失机会”的字段上有实测错误率。</span></p>
           </div>
+          <Brief items={[
+            { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'An agent that reads a pasted job posting and pulls out eligibility, application caps, deadline and materials, each with a quote checked against the posting. Nothing is submitted for me.', zh: '一个读 JD 的 Agent：抽取资格、投递上限、截止日期和材料要求，每项都附原文引用并由代码核对。它不会替我投递任何东西。' } },
+            { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'Evidence or nothing, and rules rather than the model decide eligibility.', zh: '没有证据就不算数；资格由规则判断，而不是模型。' } },
+            { label: { en: 'Result:', zh: '结果：' }, text: { en: 'Critical hallucinations fell from 20 to 6–8 of 249 fields, and critical misses stayed under 10%. The targets it missed are reported, not hidden.', zh: '关键字段幻觉从 249 个字段中的 20 个降到 6–8 个，关键漏检控制在 10% 以内；没达标的指标也如实公开。' } },
+          ]} />
           <dl className="prm">
             <div><dt><span className="en">Problem</span><span className="zh">问题</span></dt><dd><span className="en">Each posting took 15–20 minutes to check eligibility, application caps, deadline and required materials, and mistakes landed where they cost most.</span><span className="zh">每条 JD 要花 15–20 分钟核对资格、投递上限、截止日期和材料要求，而最容易出错的恰好是代价最高的地方。</span></dd></div>
             <div><dt><span className="en">My role</span><span className="zh">我的角色</span></dt><dd><span className="en">Everything: PRD, decision log, eval design, labeling, code, deployment.</span><span className="zh">全部独立完成：PRD、决策日志、评测设计、标注、开发和上线。</span></dd></div>
@@ -56,6 +62,11 @@ export default function TouTouLe() {
             <img src="/img/toutoule.png" width="2560" height="1270" alt="TouTouLe triage form, with a sidebar showing the sample profile in use" loading="lazy" />
             <figcaption><span className="en">The live demo runs on a redacted sample profile. Next in v0.2: a daily watch of about 30 career sites that skips unchanged pages by content hash.</span><span className="zh">在线 Demo 使用脱敏的示例简历。v0.2 正在开发：每天巡检约 30 个招聘官网，按内容哈希跳过未变化的页面。</span></figcaption>
           </figure>
+          <Reflection items={[
+            { en: 'Hold out a test set before tuning. The prompts were tuned on the same 50 postings they were scored on.', zh: '调提示词之前先留出独立测试集。这次的提示词是在用来评分的同一批 50 条 JD 上调的。' },
+            { en: 'Label in both languages. English-only labels counted correct Chinese answers as misses.', zh: '标注要中英文都覆盖。只用英文标注，导致正确的中文答案被算成错误。' },
+            { en: 'Decide what a hand score measures before collecting it. Mine measured priority, while the scorer rated résumé fit.', zh: '收集人工打分之前先定义清楚它衡量什么。我的打分衡量的是优先级，而模型评的是简历匹配度。' },
+          ]} />
           <div className="links">
             <a href="https://toutoule-uz7gtw3pxwffgea8l8mgwq.streamlit.app/" target="_blank" rel="noopener"><span className="en">Live demo</span><span className="zh">在线 Demo</span> ↗</a>
             <a href="https://github.com/animenzzz128/toutoule" target="_blank" rel="noopener">GitHub ↗</a>
