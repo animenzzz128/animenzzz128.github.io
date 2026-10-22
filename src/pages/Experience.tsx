@@ -58,6 +58,7 @@ export default function Experience() {
         </div>
       </section>
       <EducationSection />
+      <p className="links more"><span className="en"><a href="/resume/Jiaqi_Yao_Resume_EN.pdf" target="_blank" rel="noopener">Download résumé (PDF) ↗</a> · <a href="/resume/Jiaqi_Yao_Resume_CN.pdf" target="_blank" rel="noopener">中文简历 ↗</a></span><span className="zh"><a href="/resume/Jiaqi_Yao_Resume_CN.pdf" target="_blank" rel="noopener">下载中文简历 (PDF) ↗</a> · <a href="/resume/Jiaqi_Yao_Resume_EN.pdf" target="_blank" rel="noopener">English résumé ↗</a></span></p>
     </div>
   );
 }

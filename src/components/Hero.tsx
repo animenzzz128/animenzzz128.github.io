@@ -22,6 +22,7 @@ export default function Hero() {
             </ul>
             <div className="actions">
               <a className="btn primary" href="#contact"><span className="en">Contact me</span><span className="zh">联系我</span></a>
+              <span className="en"><a className="btn" href="/resume/Jiaqi_Yao_Resume_EN.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></span><span className="zh"><a className="btn" href="/resume/Jiaqi_Yao_Resume_CN.pdf" target="_blank" rel="noopener">简历 PDF</a></span>
               <a className="btn" href="https://www.linkedin.com/in/jiaqi-jacky-yao-94188b25a/" target="_blank" rel="noopener">LinkedIn ↗</a>
               <a className="btn" href="https://github.com/animenzzz128" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
