@@ -51,7 +51,7 @@ export default function Layout() {
             <NavLink to="/projects"><T en="Projects" zh="项目" /></NavLink>
             <NavLink to="/experience"><T en="Experience" zh="经历" /></NavLink>
             <NavLink to="/about"><T en="About" zh="关于" /></NavLink>
-            <a href="#contact"><T en="Contact" zh="联系" /></a>
+            <a className="nav-cta" href="#contact"><T en="Contact" zh="联系" /></a>
             <div className="lang" role="group" aria-label="Language">
               <button type="button" aria-pressed={lang === 'en'} onClick={() => setLang('en')}>EN</button>
               <button type="button" aria-pressed={lang === 'zh'} onClick={() => setLang('zh')}>中文</button>

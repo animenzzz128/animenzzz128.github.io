@@ -19,12 +19,12 @@ export default function TouTouLe() {
           <Brief items={[
             { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'An agent that reads a pasted job posting and pulls out eligibility, application caps, deadline and materials, each with a quote checked against the posting. Nothing is submitted for me.', zh: '一个读 JD 的 Agent：抽取资格、投递上限、截止日期和材料要求，每项都附原文引用并由代码核对。它不会替我投递任何东西。' } },
             { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'Evidence or nothing, and rules rather than the model decide eligibility.', zh: '没有证据就不算数；资格由规则判断，而不是模型。' } },
-            { label: { en: 'Result:', zh: '结果：' }, text: { en: 'Critical hallucinations fell from 20 to 6–8 of 249 fields, and critical misses stayed under 10%. The targets it missed are reported, not hidden.', zh: '关键字段幻觉从 249 个字段中的 20 个降到 6–8 个，关键漏检控制在 10% 以内；没达标的指标也如实公开。' } },
+            { label: { en: 'Result:', zh: '结果：' }, text: { en: 'Critical hallucinations fell from 20 to 8 of 249 fields in a fresh run (−60%), with critical misses at 6 of 67. The targets it missed are reported, not hidden.', zh: '复跑中关键字段幻觉从 249 个字段中的 20 个降到 8 个（−60%），关键漏检为 6/67；没达标的指标也如实公开。' } },
           ]} />
           <dl className="prm">
             <div><dt><span className="en">Problem</span><span className="zh">问题</span></dt><dd><span className="en">Each posting took 15–20 minutes to check eligibility, application caps, deadline and required materials, and mistakes landed where they cost most.</span><span className="zh">每条 JD 要花 15–20 分钟核对资格、投递上限、截止日期和材料要求，而最容易出错的恰好是代价最高的地方。</span></dd></div>
             <div><dt><span className="en">My role</span><span className="zh">我的角色</span></dt><dd><span className="en">Everything: PRD, decision log, eval design, labeling, code, deployment.</span><span className="zh">全部独立完成：PRD、决策日志、评测设计、标注、开发和上线。</span></dd></div>
-            <div><dt><span className="en">Outcome</span><span className="zh">结果</span></dt><dd><span className="en">v0.1.0 live. Critical hallucinations down 60–70% vs. baseline; critical misses held under 10%.</span><span className="zh">v0.1.0 已上线。关键字段幻觉较基线下降 60–70%，关键字段漏检控制在 10% 以内。</span></dd></div>
+            <div><dt><span className="en">Outcome</span><span className="zh">结果</span></dt><dd><span className="en">v0.1.0 live. In a fresh run, critical hallucinations fell from 20 to 8 of 249 (−60%) vs. a same-model baseline; critical misses 6 of 67.</span><span className="zh">v0.1.0 已上线。复跑中关键字段幻觉由 20/249 降至 8/249（相对同模型基线下降 60%），关键字段漏检为 6/67。</span></dd></div>
           </dl>
           <div className="split">
             <ul className="decisions">

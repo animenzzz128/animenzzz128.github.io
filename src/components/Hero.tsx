@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="wrap">
         <div className="hero">
           <div>
-            <div className="eyebrow"><span className="en">Yale SOM · Master of Management Science ’27</span><span className="zh">耶鲁大学管理学院 · 管理科学硕士 2027 届</span></div>
+            <div className="eyebrow"><span className="en">Yale SOM · MMS ’27 · Management Science (STEM)</span><span className="zh">耶鲁大学管理学院 · 管理学硕士 2027 届（STEM）</span></div>
             <h1>Jiaqi (Jacky) Yao</h1>
             <p className="cn-name">姚嘉骐</p>
             <p className="thesis">
@@ -37,7 +37,7 @@ export default function Hero() {
             <div className="now-nums">
               <div><b>+1.5pp</b><span className="en">MBP GMV penetration, TikTok Shop</span><span className="zh">TikTok Shop MBP GMV 渗透率</span></div>
               <div><b>5,000+</b><span className="en">merchants &amp; creators, 6 markets</span><span className="zh">商家与达人，覆盖六国</span></div>
-              <div><b>−70%</b><span className="en">AI hallucinations vs. baseline</span><span className="zh">AI 幻觉较基线下降</span></div>
+              <div><b>−60%</b><span className="en">AI hallucinations vs. baseline</span><span className="zh">AI 幻觉较基线下降</span></div>
             </div>
           </aside>
         </div>
