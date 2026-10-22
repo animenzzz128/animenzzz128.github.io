@@ -32,7 +32,7 @@ export default function Hero() {
             <dl>
               <div><dt><span className="en">Graduating</span><span className="zh">毕业</span></dt><dd><span className="en">June 2027 · Yale SOM (STEM)</span><span className="zh">2027 年 6 月 · 耶鲁管理学院（STEM）</span></dd></div>
               <div><dt><span className="en">Location</span><span className="zh">地点</span></dt><dd><span className="en">New Haven, CT · open to North America &amp; China</span><span className="zh">美国纽黑文 · 北美与国内均可</span></dd></div>
-              <div><dt><span className="en">Building</span><span className="zh">在做</span></dt><dd><span className="en"><Link to="/projects/toutoule">TouTouLe</Link> v0.2, an AI job-triage agent<br /><Link to="/projects/dayweave">Dayweave</Link> v1.5.5, an AI daily planner</span><span className="zh"><Link to="/projects/toutoule">投投乐</Link> v0.2，AI 求职筛选 Agent<br /><Link to="/projects/dayweave">Dayweave</Link> v1.5.5，AI 日程助手</span></dd></div>
+              <div><dt><span className="en">Building</span><span className="zh">在做</span></dt><dd><span className="en"><Link to="/projects/dayweave">Dayweave</Link> v1.5.5, an AI daily planner<br /><Link to="/projects/toutoule">TouTouLe</Link> v0.2, an AI job-triage agent</span><span className="zh"><Link to="/projects/dayweave">Dayweave</Link> v1.5.5，AI 日程助手<br /><Link to="/projects/toutoule">投投乐</Link> v0.2，AI 求职筛选 Agent</span></dd></div>
             </dl>
             <div className="now-nums">
               <div><b>+1.5pp</b><span className="en">MBP GMV penetration, TikTok Shop</span><span className="zh">TikTok Shop MBP GMV 渗透率</span></div>
