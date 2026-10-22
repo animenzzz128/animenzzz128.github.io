@@ -6,11 +6,27 @@ import { EducationCard } from '../components/EducationCard';
 import { SkillsCard } from '../components/SkillsCard';
 import T from '../components/T';
 
+const EXPLORE = [
+  { to: '/projects', title: { en: 'Projects', zh: '个人项目' }, text: { en: 'Two AI products with live demos and case studies', zh: '两个 AI 产品，可在线试用，附项目详情' } },
+  { to: '/experience', title: { en: 'Experience', zh: '工作经历' }, text: { en: 'TikTok Shop, Deloitte, IQVIA, plus education', zh: 'TikTok Shop、德勤、IQVIA 及教育背景' } },
+  { to: '/about', title: { en: 'About', zh: '关于我' }, text: { en: 'How I work, plus band and travel photos', zh: '我的做事方式，还有乐队和旅行照片' } },
+];
+
 export default function Home() {
   return (
     <>
       <Hero />
       <div className="wrap">
+        <nav className="explore" aria-label="Explore">
+          {EXPLORE.map((e, i) => (
+            <Link className="explore-card" to={e.to} key={e.to}>
+              <small>0{i + 1}</small>
+              <b><T {...e.title} /></b>
+              <span><T {...e.text} /></span>
+              <em aria-hidden="true">→</em>
+            </Link>
+          ))}
+        </nav>
         <section className="home-sec">
           <div className="sec-head">
             <div className="eyebrow"><T en="Projects" zh="个人项目" /></div>

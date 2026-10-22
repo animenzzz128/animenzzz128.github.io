@@ -22,7 +22,7 @@ export const PROJECTS: Project[] = [
       zh: '每个抽取字段都引用原文，资格由规则判断，并在出错代价最高的字段上实测错误率。',
     },
     stats: [
-      { en: '−60–70% critical hallucinations', zh: '关键字段幻觉 −60–70%' },
+      { en: 'Critical hallucinations 20 → 8 of 249', zh: '关键字段幻觉 20 → 8 / 249' },
       { en: '435 tests', zh: '435 项测试' },
       { en: 'v0.1.0 live', zh: 'v0.1.0 已上线' },
     ],
@@ -36,13 +36,13 @@ export const PROJECTS: Project[] = [
     name: 'Dayweave',
     tagline: { en: 'AI daily planner that proposes and waits for approval', zh: '只提建议、获批才动手的 AI 日程助手' },
     blurb: {
-      en: 'Turns coursework, calendar and inbox evidence into a reviewable daily plan. Nothing reaches the calendar until you approve it.',
-      zh: '把课程、日历和邮件里的信息整理成可审阅的每日计划；没有你的批准，什么都不会写进日历。',
+      en: 'Cited daily briefs, assignment breakdowns and natural-language scheduling proposals, each checked against its evidence. Nothing reaches the calendar until you approve it.',
+      zh: '带引用的每日简报、作业拆解和自然语言排程提议，每条都对照证据校验；没有你的批准，什么都不会写进日历。',
     },
     stats: [
-      { en: 'v1.5.5 released', zh: 'v1.5.5 已发布' },
+      { en: 'AI eval 61/63', zh: 'AI 评测 61/63' },
+      { en: 'Bilingual live demo', zh: '中英双语 Demo' },
       { en: 'Open source', zh: '已开源' },
-      { en: 'Bilingual demo', zh: '中英双语 Demo' },
     ],
     image: '/img/dayweave.jpg',
     imageAlt: 'Dayweave Today view with calendar events, dashed AI-proposed focus blocks and a sourced daily brief',
