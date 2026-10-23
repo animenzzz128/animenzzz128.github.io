@@ -1,5 +1,5 @@
 // Cookie-free page and click counts via GoatCounter. Leave the code empty to turn tracking off.
-export const GOATCOUNTER_CODE = '';
+export const GOATCOUNTER_CODE = 'jackyyao';
 
 type GC = { count: (v: { path: string; title?: string; event?: boolean }) => void };
 declare global { interface Window { goatcounter?: GC & { no_onload?: boolean } } }
