@@ -6,6 +6,8 @@ import TouTouLe from './pages/TouTouLe';
 import Dayweave from './pages/Dayweave';
 import Experience from './pages/Experience';
 import About from './pages/About';
+import Notes from './pages/Notes';
+import Note from './pages/Note';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -18,6 +20,8 @@ export default function App() {
         <Route path="projects/dayweave" element={<Dayweave />} />
         <Route path="experience" element={<Experience />} />
         <Route path="about" element={<About />} />
+        <Route path="notes" element={<Notes />} />
+        <Route path="notes/:slug" element={<Note />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
