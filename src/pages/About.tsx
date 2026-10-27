@@ -1,3 +1,5 @@
+import Timeline from '../components/Timeline';
+
 export default function About() {
   return (
     <div className="wrap page">
@@ -12,6 +14,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <Timeline />
       <section id="life">
         <div className="sec-head">
           <div className="eyebrow"><span className="en">Off the clock</span><span className="zh">工作之外</span></div>

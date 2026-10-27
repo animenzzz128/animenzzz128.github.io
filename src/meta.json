@@ -28,5 +28,20 @@
     "title": "About · Jiaqi (Jacky) Yao",
     "description": "How Jiaqi (Jacky) Yao works, and life outside work.",
     "image": "/og/home.png"
+  },
+  "/notes": {
+    "title": "Notes · Jiaqi (Jacky) Yao",
+    "description": "Short notes by Jiaqi (Jacky) Yao on evaluating and building AI products.",
+    "image": "/og/home.png"
+  },
+  "/notes/score-by-cost-of-error": {
+    "title": "Score AI extraction by what a mistake costs · Jiaqi (Jacky) Yao",
+    "description": "Why TouTouLe scores critical fields separately and tracks hallucinations and misses as two numbers.",
+    "image": "/og/toutoule.png"
+  },
+  "/notes/test-the-scorer": {
+    "title": "Test the scorer as hard as the model · Jiaqi (Jacky) Yao",
+    "description": "Dayweave's first AI eval scored 58/63; three of five failures were a validator bug. Re-scored: 61/63.",
+    "image": "/og/dayweave.png"
   }
 }
