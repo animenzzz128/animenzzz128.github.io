@@ -6,7 +6,7 @@
   },
   "/projects": {
     "title": "Projects · Jiaqi (Jacky) Yao",
-    "description": "Dayweave and TouTouLe: two AI products Jiaqi (Jacky) Yao built and uses every day.",
+    "description": "Dayweave, TouTouLe and Grad Planner: three products Jiaqi (Jacky) Yao built end to end.",
     "image": "/og/home.png"
   },
   "/projects/toutoule": {
@@ -18,6 +18,11 @@
     "title": "Dayweave · Jiaqi (Jacky) Yao",
     "description": "Dayweave, an AI daily planner that proposes and waits for approval. Case study by Jiaqi (Jacky) Yao.",
     "image": "/og/dayweave.png"
+  },
+  "/projects/gradplanner": {
+    "title": "Grad Planner · Jiaqi (Jacky) Yao",
+    "description": "Grad Planner (毕业去哪儿), a group planner for graduation trips: one link from vote to settle-up. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/gradplanner.png"
   },
   "/experience": {
     "title": "Experience · Jiaqi (Jacky) Yao",

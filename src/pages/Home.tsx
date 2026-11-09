@@ -8,7 +8,7 @@ import T from '../components/T';
 import Testimonials from '../components/Testimonials';
 
 const EXPLORE = [
-  { to: '/projects', title: { en: 'Projects', zh: '个人项目' }, text: { en: 'Two AI products with live demos and case studies', zh: '两个 AI 产品，可在线试用，附项目详情' } },
+  { to: '/projects', title: { en: 'Projects', zh: '个人项目' }, text: { en: 'Three products with live demos and case studies', zh: '三个产品，可在线试用，附项目详情' } },
   { to: '/experience', title: { en: 'Experience', zh: '工作经历' }, text: { en: 'TikTok Shop, Deloitte, IQVIA, plus education', zh: 'TikTok Shop、德勤、IQVIA 及教育背景' } },
   { to: '/about', title: { en: 'About', zh: '关于我' }, text: { en: 'How I work, plus band and travel photos', zh: '我的做事方式，还有乐队和旅行照片' } },
 ];
@@ -31,7 +31,7 @@ export default function Home() {
         <section className="home-sec">
           <div className="sec-head">
             <div className="eyebrow"><T en="Projects" zh="个人项目" /></div>
-            <h2><T en="Two products I built and use every day" zh="两个我独立做出来、每天都在用的产品" /></h2>
+            <h2><T en="Three products I built end to end" zh="三个我从零做出来的产品" /></h2>
           </div>
           <ProjectCards />
         </section>
