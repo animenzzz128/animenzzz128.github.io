@@ -9,7 +9,8 @@ export type Project = {
   image: string;
   imageAlt: string;
   demo: string;
-  repo: string;
+  /** Omitted while the repository is private. */
+  repo?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -48,5 +49,22 @@ export const PROJECTS: Project[] = [
     imageAlt: 'TouTouLe triage form, with a sidebar showing the sample profile in use',
     demo: 'https://toutoule-uz7gtw3pxwffgea8l8mgwq.streamlit.app/',
     repo: 'https://github.com/animenzzz128/toutoule',
+  },
+  {
+    id: 'gradplanner',
+    name: '毕业去哪儿 Grad Planner',
+    tagline: { en: 'Group planner for graduation trips: one link from vote to settle-up', zh: '毕业旅行拼团规划：一个链接从投票到分账' },
+    blurb: {
+      en: 'Classmates join by link with no sign-up, add budgets, free dates and destination votes, and get a recommended window, an editable itinerary and a minimum-transfer settlement.',
+      zh: '同学点链接即可加入、无需注册，填预算、可出行日期和目的地投票，自动得到推荐出行窗口、可编辑的每日行程和最少转账的结算方案。',
+    },
+    stats: [
+      { en: '122 unit tests', zh: '122 项单元测试' },
+      { en: 'Staged deploys, auto-rollback', zh: '分级发布 + 自动回滚' },
+      { en: 'In active iteration', zh: '持续迭代中' },
+    ],
+    image: '/img/gradplanner.jpg',
+    imageAlt: 'Grad Planner demo trip: decision board with top destination, median budget, days everyone can go and the recommended window',
+    demo: 'https://grad-trip-planner.netlify.app/',
   },
 ];

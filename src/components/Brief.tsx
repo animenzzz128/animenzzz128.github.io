@@ -14,10 +14,10 @@ export function Brief({ items }: { items: { label: Bi; text: Bi }[] }) {
 }
 
 /** What I would change if I started over, from the project's own records. */
-export function Reflection({ items }: { items: Bi[] }) {
+export function Reflection({ items, title }: { items: Bi[]; title?: Bi }) {
   return (
     <section className="reflect">
-      <h4><T en="If I started over" zh="如果重做一遍" /></h4>
+      <h4>{title ? <T {...title} /> : <T en="If I started over" zh="如果重做一遍" />}</h4>
       <ul>
         {items.map((it, i) => <li key={i}><T {...it} /></li>)}
       </ul>

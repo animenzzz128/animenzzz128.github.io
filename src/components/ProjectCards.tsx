@@ -22,7 +22,7 @@ export default function ProjectCards() {
             <div className="links">
               <a className="btn primary" href={p.demo} target="_blank" rel="noopener"><T en="Try live demo" zh="在线试用" /> ↗</a>
               <Link className="btn" to={`/projects/${p.id}`}><T en="Read case study" zh="项目详情" /> →</Link>
-              <a className="pcard-repo" href={p.repo} target="_blank" rel="noopener">GitHub ↗</a>
+              {p.repo && <a className="pcard-repo" href={p.repo} target="_blank" rel="noopener">GitHub ↗</a>}
             </div>
           </div>
         </article>

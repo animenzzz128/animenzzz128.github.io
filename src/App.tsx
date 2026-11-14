@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import TouTouLe from './pages/TouTouLe';
 import Dayweave from './pages/Dayweave';
+import GradPlanner from './pages/GradPlanner';
 import Experience from './pages/Experience';
 import About from './pages/About';
 import Notes from './pages/Notes';
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="projects/toutoule" element={<TouTouLe />} />
         <Route path="projects/dayweave" element={<Dayweave />} />
+        <Route path="projects/gradplanner" element={<GradPlanner />} />
         <Route path="experience" element={<Experience />} />
         <Route path="about" element={<About />} />
         <Route path="notes" element={<Notes />} />

@@ -7,6 +7,7 @@ const cards = [
   { file: 'home.png', html: `<div class="eyebrow">Yale SOM · MMS ’27</div><h1>Jiaqi (Jacky) Yao</h1><p class="sub">I turn messy problems into decisions you can <mark>check</mark>.</p><div class="foot"><span>Strategy · Analytics · AI products</span><span>animenzzz128.github.io</span></div>` },
   { file: 'toutoule.png', project: '/img/toutoule.png', html: `<div class="eyebrow">Case study · Jacky Yao</div><h1>投投乐 TouTouLe</h1><p class="sub">AI agent that triages job postings <mark>with evidence</mark></p><div class="foot"><span>animenzzz128.github.io</span></div>` },
   { file: 'dayweave.png', project: '/img/dayweave.jpg', html: `<div class="eyebrow">Case study · Jacky Yao</div><h1>Dayweave</h1><p class="sub">AI daily planner that proposes and <mark>waits for approval</mark></p><div class="foot"><span>animenzzz128.github.io</span></div>` },
+  { file: 'gradplanner.png', project: '/img/gradplanner.jpg', html: `<div class="eyebrow">Case study · Jacky Yao</div><h1>毕业去哪儿 Grad Planner</h1><p class="sub">Graduation trips, from vote to settle-up <mark>in one link</mark></p><div class="foot"><span>animenzzz128.github.io</span></div>` },
 ];
 
 (async () => {
