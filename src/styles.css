@@ -492,3 +492,22 @@ h3, .next-proj b, .note-card b, .explore-card b { font-weight: 600; letter-spaci
   .mat, .work::before, .wall-dots button { transition: none; }
   .mat { transform: none; }
 }
+
+/* Opening: lights off, a spotlight sweeps across the name, then the room lights up. */
+.intro { position: fixed; inset: 0; z-index: 50; background: #0b100e; overflow: hidden; cursor: pointer; display: grid; place-items: center;
+  animation: intro-out .55s ease-in 1.75s forwards; }
+.intro-beam { position: absolute; left: 50%; top: 50%; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 214, 140, .55), rgba(255, 200, 87, .12) 60%, transparent);
+  animation: intro-sweep 1.2s cubic-bezier(.5,.05,.25,1) both, intro-flood .6s ease-in 1.2s forwards; }
+.intro-text { position: relative; text-align: center; color: #f4f0e8; padding: 0 20px; }
+.intro-kicker { font: 500 .74rem/1 var(--f-mono); letter-spacing: .26em; text-transform: uppercase; color: #d9b56a; animation: intro-in .5s ease .55s both; }
+.intro-name { font: 500 clamp(2.4rem, 8vw, 5.4rem)/1 var(--f-display); letter-spacing: -0.02em; margin: 16px 0 10px; font-variation-settings: "opsz" 144;
+  animation: intro-in .6s ease .35s both; }
+.intro-cn { font: 500 clamp(1rem, 2.4vw, 1.4rem)/1 var(--f-display); letter-spacing: .3em; color: #a0a89f; animation: intro-in .5s ease .65s both; }
+.intro-skip { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  background: none; border: 1px solid rgba(244, 240, 232, .4); color: #f4f0e8; padding: 8px 14px; border-radius: 2px; font: 500 .8rem/1 var(--f-mono); letter-spacing: .1em; cursor: pointer; }
+@keyframes intro-sweep { from { transform: translateX(-70vw); } to { transform: translateX(0); } }
+@keyframes intro-flood { to { transform: scale(5); opacity: .9; } }
+@keyframes intro-in { from { opacity: 0; filter: blur(6px); } }
+@keyframes intro-out { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
+import Intro from '../components/Intro';
 import Gallery from '../components/Gallery';
 import { ExperienceCard } from '../components/ExperienceCard';
 import { EducationCard } from '../components/EducationCard';
@@ -16,6 +17,7 @@ const EXPLORE = [
 export default function Home() {
   return (
     <>
+      <Intro />
       <Hero />
       <div className="wrap">
         <section className="home-sec">
