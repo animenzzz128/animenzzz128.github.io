@@ -12,41 +12,71 @@ export default function Gallery() {
   const rail = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
+  // The lit work is whichever one sits nearest the middle of the rail; recomputed on every scroll.
   useEffect(() => {
     const el = rail.current;
-    if (!el || !('IntersectionObserver' in window)) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.i));
-      },
-      { root: el, threshold: 0.6 },
-    );
-    el.querySelectorAll<HTMLElement>('.work').forEach((w) => io.observe(w));
-    return () => io.disconnect();
+    if (!el) return;
+    el.scrollLeft = 0; // always open on the first work, even if the browser restored an old position
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const mid = el.scrollLeft + el.clientWidth / 2;
+      let best = 0, bestD = Infinity;
+      el.querySelectorAll<HTMLElement>('.work').forEach((w, i) => {
+        const d = Math.abs(w.offsetLeft - el.offsetLeft + w.offsetWidth / 2 - mid);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      setActive(best);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => { el.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(raf); };
   }, []);
 
   function go(i: number) {
     const el = rail.current;
     const w = el?.querySelectorAll<HTMLElement>('.work')[Math.max(0, Math.min(PROJECTS.length - 1, i))];
     if (!el || !w) return;
-    el.scrollTo({ left: w.offsetLeft - (el.clientWidth - w.clientWidth) / 2, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    el.scrollTo({ left: w.offsetLeft - el.offsetLeft - (el.clientWidth - w.clientWidth) / 2, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   }
 
   // Mouse drag to walk along the wall (touch and trackpads scroll natively).
   const drag = useRef<{ x: number; left: number; moved: boolean } | null>(null);
   function down(e: RPointerEvent<HTMLDivElement>) {
     if (e.pointerType !== 'mouse' || e.button !== 0 || !rail.current) return;
+    rail.current.focus({ preventScroll: true }); // so ← → work right after a drag
+    e.preventDefault(); // no text selection or native image/link drag, which would cancel the pointer stream
     drag.current = { x: e.clientX, left: rail.current.scrollLeft, moved: false };
   }
   function move(e: RPointerEvent<HTMLDivElement>) {
     const d = drag.current;
     if (!d || !rail.current) return;
     const dx = e.clientX - d.x;
-    if (Math.abs(dx) > 4) { d.moved = true; rail.current.classList.add('dragging'); }
+    if (!d.moved && Math.abs(dx) > 4) {
+      d.moved = true;
+      rail.current.classList.add('dragging');
+      try { rail.current.setPointerCapture(e.pointerId); } catch (err) { /* pointer already gone */ }
+    }
     rail.current.scrollLeft = d.left - dx;
   }
   function up() {
-    rail.current?.classList.remove('dragging');
+    const el = rail.current;
+    const d = drag.current;
+    if (!el || !d) return;
+    el.classList.remove('dragging');
+    // Snap to the nearest work explicitly, so the end position never depends on the browser re-snapping.
+    if (d.moved) {
+      const works = el.querySelectorAll<HTMLElement>('.work');
+      const mid = el.scrollLeft + el.clientWidth / 2;
+      let best = 0;
+      works.forEach((w, i) => {
+        const c = (x: HTMLElement) => Math.abs(x.offsetLeft - el.offsetLeft + x.offsetWidth / 2 - mid);
+        if (c(w) < c(works[best])) best = i;
+      });
+      go(best);
+    }
     setTimeout(() => { drag.current = null; }, 0);
   }
 
@@ -75,7 +105,9 @@ export default function Gallery() {
         onPointerDown={down}
         onPointerMove={move}
         onPointerUp={up}
-        onPointerLeave={up}
+        onPointerCancel={up}
+        onLostPointerCapture={up}
+        onDragStart={(e) => e.preventDefault()}
         onClickCapture={(e) => { if (drag.current?.moved) { e.preventDefault(); e.stopPropagation(); } }}
       >
         {PROJECTS.map((p, i) => (

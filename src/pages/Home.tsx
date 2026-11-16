@@ -25,8 +25,11 @@ export default function Home() {
             <div className="eyebrow"><T en="The wall · Projects" zh="作品墙 · 个人项目" /></div>
             <h2><T en="Three products I built end to end, each one live" zh="三个我从零做出来的产品，每个都能直接用" /></h2>
           </div>
-          <Gallery />
         </section>
+      </div>
+      {/* The wall runs edge to edge, so it sits outside .wrap (100vw would overflow by the scrollbar width). */}
+      <Gallery />
+      <div className="wrap">
         <section className="home-sec">
           <div className="sec-head">
             <div className="eyebrow"><T en="Wall text · Background" zh="展墙说明 · 背景" /></div>
