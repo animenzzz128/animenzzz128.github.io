@@ -423,9 +423,9 @@ h3, .next-proj b, .note-card b, .explore-card b { font-weight: 600; letter-spaci
 @media (max-width: 880px) { .ticket { transform: none; } }
 
 /* The wall */
-.gallery { position: relative; margin-inline: calc(50% - 50vw); }
+.gallery { position: relative; }
 .rail { display: flex; gap: clamp(28px, 6vw, 96px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-  padding: 56px max(20px, calc(50vw - 560px)) 28px; outline: none; cursor: grab; overscroll-behavior-x: contain; }
+  padding: 56px max(20px, calc(50% - 560px)) 28px; outline: none; cursor: grab; overscroll-behavior-x: contain; -webkit-user-select: none; user-select: none; }
 .rail::-webkit-scrollbar { display: none; }
 .rail.dragging { cursor: grabbing; scroll-snap-type: none; }
 .rail.dragging * { pointer-events: none; }
@@ -460,7 +460,7 @@ h3, .next-proj b, .note-card b, .explore-card b { font-weight: 600; letter-spaci
   .work::before { width: 100%; top: -40px; }
   .placard { max-width: none; }
 }
-.wall-ctrl { display: flex; align-items: center; gap: 14px; padding: 4px max(20px, calc(50vw - 560px)) 0; }
+.wall-ctrl { display: flex; align-items: center; gap: 14px; padding: 4px max(20px, calc(50% - 560px)) 0; }
 .wall-btn { width: 40px; height: 40px; border: 1px solid var(--ink); background: transparent; color: var(--ink); border-radius: 50%; cursor: pointer; font: 500 1rem/1 var(--f-body); }
 .wall-btn:disabled { opacity: .3; cursor: default; }
 .wall-btn:not(:disabled):hover { background: var(--ink); color: var(--paper); }
