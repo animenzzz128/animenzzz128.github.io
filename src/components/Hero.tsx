@@ -1,9 +1,17 @@
-import type { CSSProperties } from 'react';
+import { useRef, type CSSProperties, type PointerEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
+  const band = useRef<HTMLDivElement>(null);
+  // The spotlight follows the mouse; on touch it stays where the CSS puts it.
+  function light(e: PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== 'mouse' || !band.current) return;
+    const r = band.current.getBoundingClientRect();
+    band.current.style.setProperty('--lx', `${e.clientX - r.left}px`);
+    band.current.style.setProperty('--ly', `${e.clientY - r.top}px`);
+  }
   return (
-    <div className="hero-band">
+    <div className="hero-band" ref={band} onPointerMove={light}>
       <div className="wrap">
         <div className="hero">
           <div>
@@ -27,7 +35,8 @@ export default function Hero() {
               <a className="btn" href="https://github.com/animenzzz128" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
           </div>
-          <aside className="now" aria-label="Snapshot">
+          <aside className="now ticket" aria-label="Snapshot">
+            <div className="ticket-head" aria-hidden="true"><span>Admit one</span><span>Class of 2027</span></div>
             <div className="now-status"><span className="dot" aria-hidden="true"></span><span className="en">Open to full-time roles</span><span className="zh">正在寻找全职机会</span></div>
             <dl>
               <div><dt><span className="en">Graduating</span><span className="zh">毕业</span></dt><dd><span className="en">June 2027 · Yale SOM (STEM)</span><span className="zh">2027 年 6 月 · 耶鲁管理学院（STEM）</span></dd></div>

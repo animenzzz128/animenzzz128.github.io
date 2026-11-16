@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
-import ProjectCards from '../components/ProjectCards';
+import Gallery from '../components/Gallery';
 import { ExperienceCard } from '../components/ExperienceCard';
 import { EducationCard } from '../components/EducationCard';
 import { SkillsCard } from '../components/SkillsCard';
@@ -18,26 +18,16 @@ export default function Home() {
     <>
       <Hero />
       <div className="wrap">
-        <nav className="explore" aria-label="Explore">
-          {EXPLORE.map((e, i) => (
-            <Link className="explore-card" to={e.to} key={e.to}>
-              <small>0{i + 1}</small>
-              <b><T {...e.title} /></b>
-              <p><T {...e.text} /></p>
-              <em aria-hidden="true">→</em>
-            </Link>
-          ))}
-        </nav>
         <section className="home-sec">
           <div className="sec-head">
-            <div className="eyebrow"><T en="Projects" zh="个人项目" /></div>
-            <h2><T en="Three products I built end to end" zh="三个我从零做出来的产品" /></h2>
+            <div className="eyebrow"><T en="The wall · Projects" zh="作品墙 · 个人项目" /></div>
+            <h2><T en="Three products I built end to end, each one live" zh="三个我从零做出来的产品，每个都能直接用" /></h2>
           </div>
-          <ProjectCards />
+          <Gallery />
         </section>
         <section className="home-sec">
           <div className="sec-head">
-            <div className="eyebrow"><T en="Background" zh="背景" /></div>
+            <div className="eyebrow"><T en="Wall text · Background" zh="展墙说明 · 背景" /></div>
             <h2><T en="Strategy, consulting and research" zh="策略、咨询与研究" /></h2>
           </div>
           <div className="glance" aria-label="At a glance">
@@ -51,6 +41,17 @@ export default function Home() {
             <Link to="/about"><T en="About me" zh="关于我" /> →</Link>
           </div>
         </section>
+        <nav className="explore" aria-label="Explore">
+          <div className="eyebrow explore-head"><T en="Gallery guide" zh="展厅导览" /></div>
+          {EXPLORE.map((e, i) => (
+            <Link className="explore-card" to={e.to} key={e.to}>
+              <small>0{i + 1}</small>
+              <b><T {...e.title} /></b>
+              <p><T {...e.text} /></p>
+              <em aria-hidden="true">→</em>
+            </Link>
+          ))}
+        </nav>
       </div>
     </>
   );
