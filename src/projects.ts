@@ -7,6 +7,8 @@ export type Project = {
   blurb: Bi;
   stats: Bi[];
   image: string;
+  /** Pixel width of `image`; a 960px copy sits beside it as `name-960.ext`. */
+  imageWidth: number;
   imageAlt: string;
   demo: string;
   /** Omitted while the repository is private. */
@@ -28,6 +30,7 @@ export const PROJECTS: Project[] = [
       { en: 'Open source', zh: '已开源' },
     ],
     image: '/img/dayweave.jpg',
+    imageWidth: 1920,
     imageAlt: 'Dayweave Today view with calendar events, dashed AI-proposed focus blocks and a sourced daily brief',
     demo: 'https://animenzzz128.github.io/dayweave/',
     repo: 'https://github.com/animenzzz128/dayweave',
@@ -46,6 +49,7 @@ export const PROJECTS: Project[] = [
       { en: 'v0.1.0 live', zh: 'v0.1.0 已上线' },
     ],
     image: '/img/toutoule.png',
+    imageWidth: 2560,
     imageAlt: 'TouTouLe triage form, with a sidebar showing the sample profile in use',
     demo: 'https://toutoule-uz7gtw3pxwffgea8l8mgwq.streamlit.app/',
     repo: 'https://github.com/animenzzz128/toutoule',
@@ -64,7 +68,11 @@ export const PROJECTS: Project[] = [
       { en: 'In active iteration', zh: '持续迭代中' },
     ],
     image: '/img/gradplanner.jpg',
+    imageWidth: 1920,
     imageAlt: 'Grad Planner demo trip: decision board with top destination, median budget, days everyone can go and the recommended window',
     demo: 'https://grad-trip-planner.netlify.app/',
   },
 ];
+
+/** The 960px copy for phones and the home wall, the full-size file for large and high-density screens. */
+export const srcSet = (p: Project) => `${p.image.replace(/\.(\w+)$/, '-960.$1')} 960w, ${p.image} ${p.imageWidth}w`;

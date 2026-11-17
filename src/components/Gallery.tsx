@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { PROJECTS } from '../projects';
+import { PROJECTS, srcSet } from '../projects';
 import T from './T';
 
 /**
@@ -113,7 +113,7 @@ export default function Gallery() {
         {PROJECTS.map((p, i) => (
           <article className={`work${i === active ? ' lit' : ''}`} data-i={i} key={p.id} aria-label={`${i + 1} / ${PROJECTS.length}`}>
             <Link to={`/projects/${p.id}`} className="frame" tabIndex={-1} aria-hidden="true" draggable={false} onPointerMove={tilt} onPointerLeave={untilt}>
-              <span className="mat"><img src={p.image} alt="" loading={i ? 'lazy' : 'eager'} draggable={false} /></span>
+              <span className="mat"><img src={p.image} srcSet={srcSet(p)} sizes="(max-width: 760px) calc(100vw - 110px), 560px" alt="" draggable={false} /></span>
             </Link>
             <div className="placard">
               <div className="placard-no">No. 0{i + 1}<span aria-hidden="true"> / 0{PROJECTS.length}</span></div>

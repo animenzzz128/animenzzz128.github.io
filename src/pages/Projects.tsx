@@ -7,7 +7,7 @@ export default function Projects() {
       <section>
         <div className="sec-head">
           <div className="eyebrow"><T en="Projects" zh="个人项目" /></div>
-          <h2><T en="Three products I built end to end" zh="三个我从零做出来的产品" /></h2>
+          <h1><T en="Three products I built end to end" zh="三个我从零做出来的产品" /></h1>
         </div>
         <ProjectCards />
       </section>

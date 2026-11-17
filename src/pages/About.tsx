@@ -7,7 +7,7 @@ export default function About() {
         <div className="about">
           <div className="eyebrow"><span className="en">About</span><span className="zh">关于我</span></div>
           <div>
-            <h2><span className="en">I start from the cost of being wrong</span><span className="zh">我习惯先想清楚“错了代价是什么”</span></h2>
+            <h1><span className="en">I start from the cost of being wrong</span><span className="zh">我习惯先想清楚“错了代价是什么”</span></h1>
             <p><span className="en">My background spans economics, consulting, strategy and operations. Across all of it I learned that a confident number is worth little until you know how it was made, and which mistakes would actually cost something.</span><span className="zh">我的背景横跨经济学、咨询、策略和运营。这些经历让我明白，一个看起来很确定的数字，在你知道它怎么来的、错了会付出什么代价之前，没什么价值。</span></p>
             <p><span className="en">That shapes how I work, whether I am sizing a market, running a campaign or building with AI: get to the decision fast, show the evidence behind it, and say plainly what is still uncertain.</span><span className="zh">无论是做市场分析、推进大促，还是用 AI 做产品，我的方式都一样：尽快推到决策，把背后的证据摆出来，并坦白说明哪些地方还不确定。</span></p>
             <p><span className="en">Outside work I sing and play keys in a band, and I travel whenever I can.</span><span className="zh">工作之外，我在乐队里唱歌、弹键盘，有机会就去旅行。</span></p>

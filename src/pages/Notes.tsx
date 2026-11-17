@@ -8,7 +8,7 @@ export default function Notes() {
       <section id="notes">
         <div className="sec-head">
           <div className="eyebrow"><T en="Notes" zh="笔记" /></div>
-          <h2><T en="Short notes from building AI products" zh="做 AI 产品时的几篇短文" /></h2>
+          <h1><T en="Short notes from building AI products" zh="做 AI 产品时的几篇短文" /></h1>
         </div>
         <div className="note-list">
           {NOTES.map((n) => (

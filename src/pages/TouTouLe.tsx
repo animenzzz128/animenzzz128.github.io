@@ -13,9 +13,13 @@ export default function TouTouLe() {
         </div>
         <div className="case-body">
           <div>
-            <h3><span className="en">An AI agent that triages job postings with evidence</span><span className="zh">带证据的招聘信息筛选 AI Agent</span></h3>
+            <h1><span className="en">An AI agent that triages job postings with evidence</span><span className="zh">带证据的招聘信息筛选 AI Agent</span></h1>
             <p className="case-sub"><span className="en">A scheduled prompt gives you a summary you have to trust. TouTouLe gives you a decision record you can verify, with a measured error rate on the fields where an error costs an opportunity.</span><span className="zh">定时提示词只能给你一份需要信任的摘要；投投乐给你一份可以核验的决策记录，并且在“出错就会错失机会”的字段上有实测错误率。</span></p>
           </div>
+          <figure className="shot">
+            <img src="/img/toutoule.png" srcSet="/img/toutoule-960.png 960w, /img/toutoule.png 2560w" sizes="(max-width: 720px) 100vw, 880px" width="2560" height="1270" alt="TouTouLe triage form, with a sidebar showing the sample profile in use" />
+            <figcaption><span className="en">The live demo runs on a redacted sample profile. Next in v0.2: a daily watch of about 30 career sites that skips unchanged pages by content hash.</span><span className="zh">在线 Demo 使用脱敏的示例简历。v0.2 正在开发：每天巡检约 30 个招聘官网，按内容哈希跳过未变化的页面。</span></figcaption>
+          </figure>
           <Brief items={[
             { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'An agent that reads a pasted job posting and pulls out eligibility, application caps, deadline and materials, each with a quote checked against the posting. Nothing is submitted for me.', zh: '一个读 JD 的 Agent：抽取资格、投递上限、截止日期和材料要求，每项都附原文引用并由代码核对。它不会替我投递任何东西。' } },
             { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'Evidence or nothing, and rules rather than the model decide eligibility.', zh: '没有证据就不算数；资格由规则判断，而不是模型。' } },
@@ -58,10 +62,6 @@ export default function TouTouLe() {
             </div>
             <p className="caption"><span className="en">Ranges are the derived and fresh v4 runs. Prompts were tuned on the same 50 postings, so there is no held-out set yet.</span><span className="zh">区间为 v4 的两次运行结果。提示词是在同一批 50 条 JD 上调的，目前还没有独立测试集。</span></p>
           </div>
-          <figure className="shot">
-            <img src="/img/toutoule.png" width="2560" height="1270" alt="TouTouLe triage form, with a sidebar showing the sample profile in use" loading="lazy" />
-            <figcaption><span className="en">The live demo runs on a redacted sample profile. Next in v0.2: a daily watch of about 30 career sites that skips unchanged pages by content hash.</span><span className="zh">在线 Demo 使用脱敏的示例简历。v0.2 正在开发：每天巡检约 30 个招聘官网，按内容哈希跳过未变化的页面。</span></figcaption>
-          </figure>
           <Reflection items={[
             { en: 'Hold out a test set before tuning. The prompts were tuned on the same 50 postings they were scored on.', zh: '调提示词之前先留出独立测试集。这次的提示词是在用来评分的同一批 50 条 JD 上调的。' },
             { en: 'Label in both languages. English-only labels counted correct Chinese answers as misses.', zh: '标注要中英文都覆盖。只用英文标注，导致正确的中文答案被算成错误。' },
