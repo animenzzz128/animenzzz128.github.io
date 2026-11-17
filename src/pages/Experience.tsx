@@ -17,12 +17,12 @@ export default function Experience() {
       <section id="experience">
         <div className="sec-head">
           <div className="eyebrow"><span className="en">Experience</span><span className="zh">工作经历</span></div>
-          <h2><span className="en">Strategy, consulting and research</span><span className="zh">策略、咨询与研究</span></h2>
+          <h1><span className="en">Strategy, consulting and research</span><span className="zh">策略、咨询与研究</span></h1>
         </div>
         <div className="xp-row">
           <div className="xp-when"><span className="en">May – Aug 2025 · Shanghai</span><span className="zh">2025.05 – 08 · 上海</span></div>
           <div className="xp-what">
-            <h4><span className="en">ByteDance, TikTok Shop</span><span className="zh">字节跳动（TikTok Shop）</span> <span><span className="en">· Strategy Operations Intern, Regional Analytics &amp; Special Projects</span><span className="zh">· 战略运营实习生，区域分析与专项项目组</span></span></h4>
+            <h2><span className="en">ByteDance, TikTok Shop</span><span className="zh">字节跳动（TikTok Shop）</span> <span><span className="en">· Strategy Operations Intern, Regional Analytics &amp; Special Projects</span><span className="zh">· 战略运营实习生，区域分析与专项项目组</span></span></h2>
             <ul className="en">
               <li>Built the analytics and business case for automating Monetized Business Packages (MBP), supporting Data Science and Engineering investment; contributed to a 1.5pp increase in Southeast Asia MBP GMV penetration.</li>
               <li>Selected campaign KPIs and built 50+ Excel dashboards from scratch, analyzing about 200K cumulative seller, creator, product and campaign data points to identify performance gaps.</li>
@@ -39,7 +39,7 @@ export default function Experience() {
         <div className="xp-row">
           <div className="xp-when"><span className="en">May – Jul 2024 · Beijing</span><span className="zh">2024.05 – 07 · 北京</span></div>
           <div className="xp-what">
-            <h4><span className="en">Deloitte Consulting</span><span className="zh">德勤咨询</span> <span><span className="en">· Consulting Analyst Intern</span><span className="zh">· 咨询分析师实习生</span></span></h4>
+            <h2><span className="en">Deloitte Consulting</span><span className="zh">德勤咨询</span> <span><span className="en">· Consulting Analyst Intern</span><span className="zh">· 咨询分析师实习生</span></span></h2>
             <ul className="en">
               <li>Produced six data-visualization reports and supported the design of 30+ digital retail-platform pages in Axure, contributing to the implementation blueprint with the business-analysis team.</li>
               <li>Cleaned and analyzed 18K+ retail records using Python and Tableau, applying exploratory and predictive analysis to inform a building-materials client’s two-year business outlook.</li>
@@ -54,7 +54,7 @@ export default function Experience() {
         <div className="xp-row">
           <div className="xp-when"><span className="en">Jun 2023 – Apr 2024 · Shanghai</span><span className="zh">2023.06 – 2024.04 · 上海</span></div>
           <div className="xp-what">
-            <h4>IQVIA <span><span className="en">· Analyst Intern</span><span className="zh">· 分析师实习生</span></span></h4>
+            <h2>IQVIA <span><span className="en">· Analyst Intern</span><span className="zh">· 分析师实习生</span></span></h2>
             <ul className="en">
               <li>Analyzed pricing and consumer-behavior information across 12 drugs and synthesized 10+ expert interviews, drawing on regulatory and clinical research to assess market and pricing strategies.</li>
             </ul>

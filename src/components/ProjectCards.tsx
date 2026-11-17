@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PROJECTS } from '../projects';
+import { PROJECTS, srcSet } from '../projects';
 import T from './T';
 
 export default function ProjectCards() {
@@ -8,12 +8,12 @@ export default function ProjectCards() {
       {PROJECTS.map((p) => (
         <article className="pcard" key={p.id}>
           <Link to={`/projects/${p.id}`} className="pcard-shot" tabIndex={-1} aria-hidden="true">
-            <img src={p.image} alt="" loading="lazy" />
+            <img src={p.image} srcSet={srcSet(p)} sizes="(max-width: 760px) 100vw, 540px" alt="" loading="lazy" />
             <span className="pcard-live"><i aria-hidden="true" /><T en="Live demo" zh="可在线试用" /></span>
             <span className="pcard-open"><T en="Open case study" zh="查看项目详情" /> →</span>
           </Link>
           <div className="pcard-body">
-            <h3><Link to={`/projects/${p.id}`}>{p.name}</Link></h3>
+            <h2><Link to={`/projects/${p.id}`}>{p.name}</Link></h2>
             <p className="pcard-tag"><T {...p.tagline} /></p>
             <p className="pcard-blurb"><T {...p.blurb} /></p>
             <ul className="pcard-stats">

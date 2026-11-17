@@ -1,15 +1,18 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Projects from './pages/Projects';
-import TouTouLe from './pages/TouTouLe';
-import Dayweave from './pages/Dayweave';
-import GradPlanner from './pages/GradPlanner';
-import Experience from './pages/Experience';
-import About from './pages/About';
-import Notes from './pages/Notes';
-import Note from './pages/Note';
-import NotFound from './pages/NotFound';
+
+// Only the home page ships in the first download; each other page loads when it is first opened.
+const Projects = lazy(() => import('./pages/Projects'));
+const TouTouLe = lazy(() => import('./pages/TouTouLe'));
+const Dayweave = lazy(() => import('./pages/Dayweave'));
+const GradPlanner = lazy(() => import('./pages/GradPlanner'));
+const Experience = lazy(() => import('./pages/Experience'));
+const About = lazy(() => import('./pages/About'));
+const Notes = lazy(() => import('./pages/Notes'));
+const Note = lazy(() => import('./pages/Note'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 export default function App() {
   return (

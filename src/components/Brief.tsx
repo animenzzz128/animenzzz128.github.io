@@ -17,7 +17,7 @@ export function Brief({ items }: { items: { label: Bi; text: Bi }[] }) {
 export function Reflection({ items, title }: { items: Bi[]; title?: Bi }) {
   return (
     <section className="reflect">
-      <h4>{title ? <T {...title} /> : <T en="If I started over" zh="如果重做一遍" />}</h4>
+      <h2>{title ? <T {...title} /> : <T en="If I started over" zh="如果重做一遍" />}</h2>
       <ul>
         {items.map((it, i) => <li key={i}><T {...it} /></li>)}
       </ul>

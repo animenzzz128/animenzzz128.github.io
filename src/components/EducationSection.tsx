@@ -17,7 +17,7 @@ export function EducationSection() {
       {SCHOOLS.map((s) => (
         <div className="xp-row" key={s.degree.en}>
           <div className="xp-when"><T {...s.when} /></div>
-          <div className="xp-what"><h4><T {...s.school} /> <span>· <T {...s.degree} /></span></h4></div>
+          <div className="xp-what"><h3><T {...s.school} /> <span>· <T {...s.degree} /></span></h3></div>
         </div>
       ))}
     </section>

@@ -7,7 +7,7 @@ export default function NotFound() {
       <section>
         <div className="sec-head">
           <div className="eyebrow">404</div>
-          <h2><T en="This page doesn’t exist" zh="这个页面不存在" /></h2>
+          <h1><T en="This page doesn’t exist" zh="这个页面不存在" /></h1>
         </div>
         <p className="links"><Link to="/"><T en="Back to the home page" zh="回到主页" /> →</Link></p>
       </section>

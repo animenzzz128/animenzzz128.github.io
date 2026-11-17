@@ -31,6 +31,7 @@ export default function Contact() {
           <a className="btn" href="https://github.com/animenzzz128" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
         <p className="foot">New Haven, CT · <T en="Open to full-time roles in North America and China" zh="关注北美与国内的全职机会" /></p>
+        <p className="foot"><T en="Site built with Claude Code under Jacky Yao’s direction" zh="本站由 Claude Code 协助搭建，姚嘉骐指导并审定" /></p>
       </div>
     </section>
   );

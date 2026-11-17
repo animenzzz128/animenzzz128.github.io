@@ -15,9 +15,13 @@ export default function GradPlanner() {
         </div>
         <div className="case-body">
           <div>
-            <h3><span className="en">A graduation trip, organised from one link</span><span className="zh">毕业旅行，一个链接就能组起来</span></h3>
+            <h1><span className="en">A graduation trip, organised from one link</span><span className="zh">毕业旅行，一个链接就能组起来</span></h1>
             <p className="case-sub"><span className="en">Class trips get planned in group chats and shared docs: dozens of opinions, and where, when and how much all pull against each other. Grad Planner puts votes, budgets and free dates on one board, then carries the group through the itinerary and the settle-up.</span><span className="zh">毕业旅行通常靠微信群接龙加在线文档：消息刷屏、几十人意见分散，去哪儿、什么时候、花多少钱三件事互相牵制。毕业去哪儿把投票、预算和可出行日期放到一张看板上，再一路带到行程和 AA 结算。</span></p>
           </div>
+          <figure className="shot">
+            <img src="/img/gradplanner.jpg" srcSet="/img/gradplanner-960.jpg 960w, /img/gradplanner.jpg 1920w" sizes="(max-width: 720px) 100vw, 880px" width="1920" height="960" alt="Grad Planner demo trip: decision board with the top destination, median budget, days everyone can go and the recommended window" />
+            <figcaption><span className="en">The decision board of the demo trip (the app's interface is in Chinese).</span><span className="zh">示例团的决策看板。</span></figcaption>
+          </figure>
           <Brief items={[
             { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'A no-sign-up web app: an organiser creates a trip and shares the link; classmates add a budget cap, free dates and destination votes; the board recommends a window; the group edits a daily itinerary and logs expenses.', zh: '一个无需注册的网页应用：发起人建团、发链接；同学填预算上限、可出行日期和目的地投票；看板推荐出行窗口；大家一起改每日行程、记账分摊。' } },
             { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'The public link must never break. Production is reached only by promoting a draft that passed a smoke test, with automatic rollback, and staging writes to a separate data store.', zh: '公开链接永远不能挂。生产环境只能通过“冒烟测试通过的草稿部署”晋级上线，失败自动回滚；预发环境写入独立的数据存储。' } },
@@ -53,10 +57,6 @@ export default function GradPlanner() {
             </div>
             <p className="caption"><span className="en">From the project's iteration report. Neither check replaced the other.</span><span className="zh">数据来自项目的迭代报告。两种检查都有用，谁也替代不了谁。</span></p>
           </div>
-          <figure className="shot">
-            <img src="/img/gradplanner.jpg" width="1920" height="960" alt="Grad Planner demo trip: decision board with the top destination, median budget, days everyone can go and the recommended window" loading="lazy" />
-            <figcaption><span className="en">The decision board of the demo trip (the app's interface is in Chinese).</span><span className="zh">示例团的决策看板。</span></figcaption>
-          </figure>
           <Reflection title={{ en: 'Next on the backlog', zh: '待办中的下一步' }} items={[
             { en: 'Atomic storage writes, for true concurrency safety beyond the itinerary.', zh: '存储层原子写入，让行程之外的部分也真正并发安全。' },
             { en: 'Lightweight identity: claim a member with a PIN.', zh: '轻量身份：用 PIN 认领成员身份。' },

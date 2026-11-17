@@ -13,9 +13,13 @@ export default function Dayweave() {
         </div>
         <div className="case-body">
           <div>
-            <h3><span className="en">An AI daily planner that proposes, and waits for your approval</span><span className="zh">只提建议、等你批准才动手的 AI 日程助手</span></h3>
+            <h1><span className="en">An AI daily planner that proposes, and waits for your approval</span><span className="zh">只提建议、等你批准才动手的 AI 日程助手</span></h1>
             <p className="case-sub"><span className="en">Most AI assistants act first and explain later. Dayweave turns coursework, calendar and inbox evidence into a daily plan you can review, and keeps what a source says, what the assistant recommends and what you approve visibly separate.</span><span className="zh">多数 AI 助手先动手、后解释。Dayweave 把课程、日历和邮件里的信息整理成一份可以审阅的每日计划，并始终把“来源说了什么”“助手建议什么”“你批准了什么”分开展示。</span></p>
           </div>
+          <figure className="shot">
+            <img src="/img/dayweave.jpg" srcSet="/img/dayweave-960.jpg 960w, /img/dayweave.jpg 1920w" sizes="(max-width: 720px) 100vw, 880px" width="1920" height="960" alt="Dayweave Today view: a timeline with calendar events and dashed AI-proposed focus blocks, a sourced daily brief and three priorities" />
+            <figcaption><span className="en">The Today view in the public demo. Dashed blocks are AI proposals; they reach the calendar only after approval.</span><span className="zh">公开 Demo 的“今天”页面。虚线框是 AI 建议的时段，只有批准后才会写入日历。</span></figcaption>
+          </figure>
           <Brief items={[
             { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'A bilingual planner for graduate students, with cited daily briefs, assignment breakdowns and natural-language scheduling proposals.', zh: '一个面向研究生的中英双语日程助手，提供带引用的每日简报、作业拆解和自然语言排程提议。' } },
             { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'Rules decide what matters and when. The model only explains, breaks down or parses, every output is checked against its evidence, and nothing reaches the calendar without approval of an exact version.', zh: '重要性和时间由规则决定，模型只负责解释、拆解和理解指令；每条输出都要对照证据校验，未经批准的具体版本不会写进日历。' } },
@@ -49,10 +53,6 @@ export default function Dayweave() {
             </div>
             <p className="caption"><span className="en">Cases include source outages, a moved deadline, the DST change day and instructions injected into an email. 21 cases on one fictional student are a regression set, not a measure of reliability on real data.</span><span className="zh">场景包括数据源中断、截止日期变更、夏令时切换日、邮件里被注入的指令等。21 个场景都基于同一位虚构学生，是回归测试集，不代表真实数据上的可靠性。</span></p>
           </div>
-          <figure className="shot">
-            <img src="/img/dayweave.jpg" width="1920" height="960" alt="Dayweave Today view: a timeline with calendar events and dashed AI-proposed focus blocks, a sourced daily brief and three priorities" loading="lazy" />
-            <figcaption><span className="en">The Today view in the public demo. Dashed blocks are AI proposals; they reach the calendar only after approval.</span><span className="zh">公开 Demo 的“今天”页面。虚线框是 AI 建议的时段，只有批准后才会写入日历。</span></figcaption>
-          </figure>
           <Reflection items={[
             { en: 'Start with deterministic rules and scored checks. An early trial that let the model read raw inputs got deadline boundaries and uncertainty wrong.', zh: '一开始就用确定性规则和可打分的检查。早期让模型直接读原始数据的尝试，在截止时间边界和不确定性上出了错。' },
             { en: 'Test the scorer as hard as the model. Three of the first five eval failures were a bug in my validator, not in the outputs.', zh: '评分器要和模型一样认真测试。首轮 5 个失败里，有 3 个是我写的校验器的 bug，而不是输出的问题。' },
