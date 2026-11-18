@@ -11,7 +11,7 @@ export type Project = {
   imageWidth: number;
   imageAlt: string;
   demo: string;
-  /** Omitted while the repository is private. */
+  /** Omitted while the repository is private, or when the site links only the live product (grandma). */
   repo?: string;
 };
 
@@ -34,6 +34,25 @@ export const PROJECTS: Project[] = [
     imageAlt: 'Dayweave Today view with calendar events, dashed AI-proposed focus blocks and a sourced daily brief',
     demo: 'https://animenzzz128.github.io/dayweave/',
     repo: 'https://github.com/animenzzz128/dayweave',
+  },
+  {
+    id: 'grandma',
+    name: "Grandma's Wi-Fi Password",
+    tagline: { en: 'A conversational deduction game where the AI is the haystack', zh: '对话推理解谜游戏：AI 是草堆，密码是那根针' },
+    blurb: {
+      en: "Ask an LLM-powered Grandma about the old days, look around her 3D living room for proof, and work out the Wi-Fi password from her true but rambling memories. The model only phrases her replies; the facts and rules live in code.",
+      zh: '向 LLM 驱动的奶奶打听往事，在她的 3D 客厅里找物证，从真实却绕弯的回忆中推出 Wi-Fi 密码。模型只负责措辞，事实和规则都在代码里。',
+    },
+    stats: [
+      { en: '0 password leaks in the eval', zh: '评测中 0 次泄露密码' },
+      { en: '65 iterations in seven days', zh: '7 天 65 轮迭代' },
+      { en: 'Live on desktop and phone', zh: '已上线，电脑手机可玩' },
+    ],
+    image: '/img/grandma.jpg',
+    imageWidth: 1920,
+    imageAlt: "Title screen of Grandma's Wi-Fi Password over Grandma's 3D living room",
+    demo: 'https://grandmas-wifi-password.fly.dev',
+    // No repo on purpose: the site links only the live game.
   },
   {
     id: 'toutoule',

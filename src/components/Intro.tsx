@@ -7,7 +7,7 @@ import T from './T';
 const KEY = 'intro-seen';
 const CAPTIONS = [
   { en: 'The title wall', zh: '展名墙' },
-  { en: 'Three products, each one live', zh: '三个产品，每个都能直接用' },
+  { en: 'Four products, each one live', zh: '四个产品，每个都能直接用' },
   { en: 'Every claim comes with a number you can check', zh: '每个结论，都有可以核对的数字' },
   { en: 'Admit one', zh: '凭券入场' },
 ];
@@ -42,8 +42,9 @@ function fontsReady() {
 }
 
 /**
- * A six-second opening: the name goes up on the green title wall, the camera rounds the corner to the three
- * projects, steps up to the first one, and its label becomes the ticket in the hero (see opening/scene.ts).
+ * A six-second opening: the name goes up on the green title wall, the camera rounds the corner to the
+ * projects (one frame per entry in projects.ts), steps up to the first one, and its label becomes the ticket in the
+ * hero (see opening/scene.ts).
  * Plays once per visit; a click, a key, a scroll or the Skip button ends it. The page underneath is already
  * rendered, and visitors who prefer reduced motion, have no WebGL or are in WeChat never see the film.
  */
