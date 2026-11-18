@@ -6,7 +6,7 @@
   },
   "/projects": {
     "title": "Projects · Jiaqi (Jacky) Yao",
-    "description": "Dayweave, TouTouLe and Grad Planner: three products Jiaqi (Jacky) Yao built end to end.",
+    "description": "Dayweave, Grandma's Wi-Fi Password, TouTouLe and Grad Planner: four products Jiaqi (Jacky) Yao built end to end.",
     "image": "/og/home.png"
   },
   "/projects/toutoule": {
@@ -18,6 +18,11 @@
     "title": "Dayweave · Jiaqi (Jacky) Yao",
     "description": "Dayweave, an AI daily planner that proposes and waits for approval. Case study by Jiaqi (Jacky) Yao.",
     "image": "/og/dayweave.png"
+  },
+  "/projects/grandma": {
+    "title": "Grandma's Wi-Fi Password · Jiaqi (Jacky) Yao",
+    "description": "Grandma's Wi-Fi Password, a conversational deduction game where an LLM-powered Grandma is the haystack. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/grandma.png"
   },
   "/projects/gradplanner": {
     "title": "Grad Planner · Jiaqi (Jacky) Yao",

@@ -39,7 +39,7 @@ export default function Home() {
           <section className="home-sec">
             <div className="sec-head">
               <div className="eyebrow"><T en="The wall · Projects" zh="作品墙 · 个人项目" /></div>
-              <SectionHeading en="Three products I built end to end, each one live" zh="三个我从零做出来的产品，每个都能直接用" />
+              <SectionHeading en="Four products I built end to end, each one live" zh="四个我从零做出来的产品，每个都能直接用" />
             </div>
           </section>
         </div>

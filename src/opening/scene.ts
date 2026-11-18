@@ -2,7 +2,7 @@
  * The home page opening: a six-second walk through a small gallery.
  *   0.0  title wall   the name is lettered onto the green entrance wall
  *   1.5  the corner   the camera trucks right, past the wall's edge, into the white room
- *   2.9  the wall     three framed projects; lamps come on one by one, the last template comes down
+ *   2.9  the wall     the framed projects; lamps come on one by one, the last template comes down
  *   4.0  step closer  the first work and its label
  *   5.0  the ticket   the label lifts off the wall and lands where the page's ticket sits
  * Every frame is computed from the time alone, so the film can be skipped or jumped to any moment.
@@ -208,12 +208,12 @@ function floorArt(a: string, b: string) {
   t.wrapS = t.wrapT = RepeatWrapping;
   return t;
 }
-function kraftArt() {
+function kraftArt(no: number) {
   const { c, g } = canvas2d(512, 360);
   g.fillStyle = '#c9a678'; g.fillRect(0, 0, 512, 360);
   g.strokeStyle = 'rgba(90,62,28,.7)'; g.lineWidth = 3; g.setLineDash([14, 10]); g.strokeRect(18, 18, 476, 324);
   g.setLineDash([]); g.fillStyle = 'rgba(90,62,28,.8)'; g.font = `500 26px ${F_MONO}`; spacing(g, 4);
-  g.fillText('NO. 03', 40, 64);
+  g.fillText(`NO. ${String(no).padStart(2, '0')}`, 40, 64);
   g.fillStyle = '#7faedb'; g.globalAlpha = 0.9;
   g.save(); g.translate(-10, 6); g.rotate(-0.5); g.fillRect(0, 0, 90, 22); g.restore();
   g.save(); g.translate(440, -14); g.rotate(0.5); g.fillRect(0, 0, 90, 22); g.restore();
@@ -328,8 +328,11 @@ export async function createOpening(o: OpeningOptions, cancelled: () => boolean)
   const film = keep(new MeshBasicMaterial({ color: CREAM, transparent: true, opacity: 0, depthWrite: false }));
   const filmMesh = plane(1, title.film.height * TH, film, TX, TY + (0.5 - title.film.top - title.film.height / 2) * TH, 1.253);
 
-  // ---- three works ----
-  const FX = [0, 3, 6], FY = 1.6, n = o.works.length;
+  // ---- the works, 3 m apart ----
+  const n = o.works.length, FX = o.works.map((_, i) => 3 * i), FY = 1.6;
+  // The wall shot spans the lamp pools end to end (each 3.6 m wide): 1.8 m past the first and last frames' centres.
+  // The last label reaches +1.68 m, so do not tighten this.
+  const ROW = FX[n - 1];
   const pool = poolArt(P.pool, P.poolA), shadow = shadowArt();
   const pools: MeshBasicMaterial[] = [], shots: MeshBasicMaterial[] = [];
   const labels: { mesh: Mesh; mat: MeshBasicMaterial; x: number }[] = [];
@@ -358,10 +361,10 @@ export async function createOpening(o: OpeningOptions, cancelled: () => boolean)
     }
   });
 
-  // The third work is still a kraft-paper hanging template; it comes down as the lamps come on.
+  // The last work is still a kraft-paper hanging template; it comes down as the lamps come on.
   const kraft = new Group();
-  kraft.position.set(FX[2] - 1.01, FY + 0.71, 0.062); scene.add(kraft);
-  const kraftMat = painted(kraftArt());
+  kraft.position.set(FX[n - 1] - 1.01, FY + 0.71, 0.062); scene.add(kraft);
+  const kraftMat = painted(kraftArt(n));
   plane(2.02, 1.42, kraftMat, 1.01, -0.71, 0, kraft);
 
   // The first work's label, which becomes the ticket.
@@ -385,8 +388,8 @@ export async function createOpening(o: OpeningOptions, cancelled: () => boolean)
     SHOTS = [
       { t: 0.0, x: -6.6, y: 1.9, w: tall ? 5.0 : 6.6, h: 3.0, z: 1.25, ease: ss },
       { t: 1.5, x: -6.6, y: 1.9, w: tall ? 4.7 : 6.0, h: 2.8, z: 1.25, ease: ss },
-      { t: 2.9, x: tall ? 1.6 : 3.0, y: 1.5, w: tall ? 5.6 : 9.6, h: 3.2, z: 0, ease: eio },
-      { t: 4.0, x: tall ? 2.0 : 3.4, y: 1.5, w: tall ? 5.4 : 9.2, h: 3.1, z: 0, ease: ss },
+      { t: 2.9, x: tall ? 1.6 : ROW / 2, y: 1.5, w: tall ? 5.6 : ROW + 3.6, h: 3.2, z: 0, ease: eio },
+      { t: 4.0, x: tall ? 2.0 : ROW / 2 + 0.4, y: 1.5, w: tall ? 5.4 : ROW + 3.2, h: 3.1, z: 0, ease: ss },
       { t: 5.0, x: tall ? 0.35 : 0.65, y: 1.5, w: tall ? 3.1 : 3.9, h: 2.0, z: 0, ease: eio },
       { t: END, x: tall ? 0.38 : 0.7, y: 1.5, w: tall ? 3.0 : 3.7, h: 1.9, z: 0, ease: ss },
     ];
@@ -435,7 +438,7 @@ export async function createOpening(o: OpeningOptions, cancelled: () => boolean)
     const out = (j: number) => ss(seg(t, 2.45 + 0.28 * j, 3.05 + 0.28 * j));
     labels.forEach((l, j) => { const k = out(j + 1); l.mat.opacity = k; l.mesh.position.x = l.x - (1 - k) * 0.35; });
 
-    // the template comes off the third work
+    // the template comes off the last work
     const kd = eio(seg(t, 3.0, 3.9));
     kraft.rotation.z = -0.5 * kd;
     kraft.position.y = FY + 0.71 - 2.6 * kd * kd;
