@@ -127,8 +127,8 @@ export const WORKS: Project[] = [
     name: '烬塔 Spire of Ashes',
     tagline: { en: 'A roguelike deckbuilder tuned with a bot simulator', zh: '用机器人模拟器调数值的卡牌构筑爬塔游戏' },
     blurb: {
-      en: 'A Slay the Spire–style genre exercise for the browser, with original names. A bot plays 2,000 runs per class on the real engine, and CI keeps win rates inside a target band.',
-      zh: '《杀戮尖塔》同类玩法练习，一款网页卡牌构筑游戏（名称均已改为原创）。机器人在真实引擎上每个职业跑 2,000 局，CI 把胜率守在目标区间内。',
+      en: 'A Slay the Spire–style genre exercise for the browser, with original names. A bot plays 2,000 runs per class on the real engine, and CI fails if its balance metrics leave their guardrail bands.',
+      zh: '《杀戮尖塔》同类玩法练习，一款网页卡牌构筑游戏（名称均已改为原创）。机器人在真实引擎上每个职业跑 2,000 局，平衡指标超出护栏区间时 CI 报错。',
     },
     stats: [
       { en: '2,000 bot runs per class', zh: '每职业 2,000 局模拟' },
