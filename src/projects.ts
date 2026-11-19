@@ -20,9 +20,6 @@ export type Project = {
   repo?: string;
 };
 
-/** Spire of Ashes is kept out of this public repo (page, images and card) until its rename PR is merged and its
- * GitHub Pages build is live; the restore checklist is in the job-search workbench, handoff 07. */
-
 /** Every work, in display order within each section. */
 export const WORKS: Project[] = [
   {
@@ -123,6 +120,26 @@ export const WORKS: Project[] = [
     imageAlt: 'A pixel-art study at dusk with a chibi character at a laptop, a cat, bookshelves and a sunset window',
     demo: 'https://animenzzz128.github.io/jacky-s-room/',
     repo: 'https://github.com/animenzzz128/jacky-s-room',
+  },
+  {
+    id: 'spire',
+    kind: 'game',
+    name: '烬塔 Spire of Ashes',
+    tagline: { en: 'A roguelike deckbuilder tuned with a bot simulator', zh: '用机器人模拟器调数值的卡牌构筑爬塔游戏' },
+    blurb: {
+      en: 'A Slay the Spire–style genre exercise for the browser, with original names. A bot plays 2,000 runs per class on the real engine, and CI keeps win rates inside a target band.',
+      zh: '《杀戮尖塔》同类玩法练习，一款网页卡牌构筑游戏（名称均已改为原创）。机器人在真实引擎上每个职业跑 2,000 局，CI 把胜率守在目标区间内。',
+    },
+    stats: [
+      { en: '2,000 bot runs per class', zh: '每职业 2,000 局模拟' },
+      { en: 'Balance guardrails in CI', zh: 'CI 平衡护栏' },
+      { en: 'Chinese & English', zh: '中英双语' },
+    ],
+    image: '/img/spire.jpg',
+    imageWidth: 1920,
+    imageAlt: 'A turn-based card battle with an armored hero, a green ooze showing its next move and five cards in hand',
+    demo: 'https://animenzzz128.github.io/spire-of-ashes/',
+    repo: 'https://github.com/animenzzz128/spire-of-ashes',
   },
   {
     id: 'level0',
