@@ -18,7 +18,7 @@ export const NOTES: Note[] = [
       { p: { en: 'For critical fields I track two failures separately, because they pull in opposite directions:', zh: '关键字段上我分开追踪两类失败，因为它们此消彼长：' } },
       { list: [
         { en: 'Hallucination: a value the posting does not support. Target 0 of 249.', zh: '幻觉：原文并不支持的值。目标 0 / 249。' },
-        { en: 'False negative: a value the posting states but the agent missed. Target 10% or less.', zh: '漏报：原文写了但没抽到的值。目标不超过 10%。' },
+        { en: 'False negative: a value the posting states but extraction missed. Target 10% or less.', zh: '漏报：原文写了但没抽到的值。目标不超过 10%。' },
       ] },
       { p: { en: 'The main guard against hallucination is strict: every value must carry a quote, code checks the quote word for word against the posting, and a value that fails becomes “Not stated”. That trades hallucinations for misses, which is exactly why misses need their own number. Eligibility itself is decided by six deterministic rules, not by the model.', zh: '防幻觉的主要手段很严格：每个值都要带原文引用，代码逐字核对，核对不上就记为“未说明”。这等于用漏报换幻觉，所以漏报必须有自己的指标。至于是否符合资格，由六条确定性规则判断，而不是模型。' } },
       { h: { en: 'What the numbers said', zh: '结果怎么样' } },

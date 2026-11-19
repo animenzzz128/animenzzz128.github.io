@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { PROJECTS } from '../projects';
+import { FILM } from '../projects';
 import { cjkFonts } from '../fonts';
+import type { TicketLayout } from '../opening/scene';
 import T from './T';
 
 const KEY = 'intro-seen';
@@ -29,6 +30,36 @@ function shouldPlay() {
     const c = document.createElement('canvas');
     return !!(c.getContext('webgl2') || c.getContext('webgl'));
   } catch (e) { return false; }
+}
+
+/** The hero ticket's rows as the film paints them: labels as shown (visible language, CSS uppercase) and where they sit. */
+function ticketRows(): TicketLayout | null {
+  const t = document.querySelector('.ticket');
+  const r = t?.getBoundingClientRect();
+  if (!t || !r || r.height <= 0) return null;
+  const f = (y: number) => (y - r.top) / r.height;
+  const divs = [...t.querySelectorAll('dl > div')];
+  let size = 0;
+  const rows = divs.map((d) => {
+    const dt = d.querySelector('dt') as HTMLElement | null;
+    const b = (dt ?? d).getBoundingClientRect();
+    const cs = dt ? getComputedStyle(dt) : null;
+    const px = cs ? parseFloat(cs.fontSize) || 11 : 11;
+    const lh = cs ? parseFloat(cs.lineHeight) || px * 1.6 : px * 1.6;
+    size = px / r.height;
+    // The baseline of a single line sits about 73% down its line box for this mono face at line-height 1.6.
+    return { label: (dt?.innerText ?? '').trim(), top: f(d.getBoundingClientRect().top), base: f(b.top + Math.min(lh, b.height) * 0.73) };
+  }).filter((row) => row.label);
+  if (!rows.length) return null;
+  // The figures: Fraunces at line-height 1 puts its baseline about 86% down the line box.
+  let numSize = 0;
+  const nums = [...t.querySelectorAll('.now-nums b')].map((b) => {
+    const br = b.getBoundingClientRect();
+    const px = parseFloat(getComputedStyle(b).fontSize) || 24;
+    numSize = px / r.height;
+    return { text: (b as HTMLElement).innerText.trim(), left: (br.left - r.left) / r.width, base: f(br.top + px * 0.86) };
+  });
+  return { rows, bottom: f(divs[divs.length - 1].getBoundingClientRect().bottom), size, nums, numSize };
 }
 
 function fontsReady() {
@@ -82,8 +113,9 @@ export default function Intro() {
           canvas: canvas.current,
           dark: theme === 'dark' || (theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches),
           zh,
-          works: PROJECTS.map((p) => ({ name: p.name, line: String(zh ? p.tagline.zh : p.tagline.en), facts: p.stats.map((s) => String(zh ? s.zh : s.en)), image: p.image })),
+          works: FILM.map((p) => ({ name: p.name, line: String(zh ? p.tagline.zh : p.tagline.en), facts: p.stats.map((s) => String(zh ? s.zh : s.en)), image: p.image })),
           ticketRect: () => document.querySelector('.ticket')?.getBoundingClientRect() ?? null,
+          ticketRows,
         }, () => dead);
         if (dead || !film) return;
         started = performance.now();

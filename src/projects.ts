@@ -1,7 +1,11 @@
 import type { Bi } from './lang';
 
+/** Which section a work lives in: product projects under /projects, games under /games. */
+export type Kind = 'project' | 'game';
+
 export type Project = {
   id: string;
+  kind: Kind;
   name: string;
   tagline: Bi;
   blurb: Bi;
@@ -10,14 +14,20 @@ export type Project = {
   /** Pixel width of `image`; a 960px copy sits beside it as `name-960.ext`. */
   imageWidth: number;
   imageAlt: string;
-  demo: string;
+  /** Omitted until the work has a public link. */
+  demo?: string;
   /** Omitted while the repository is private, or when the site links only the live product (grandma). */
   repo?: string;
 };
 
-export const PROJECTS: Project[] = [
+/** Spire of Ashes is kept out of this public repo (page, images and card) until its rename PR is merged and its
+ * GitHub Pages build is live; the restore checklist is in the job-search workbench, handoff 07. */
+
+/** Every work, in display order within each section. */
+export const WORKS: Project[] = [
   {
     id: 'dayweave',
+    kind: 'project',
     name: 'Dayweave',
     tagline: { en: 'AI daily planner that proposes and waits for approval', zh: '只提建议、获批才动手的 AI 日程助手' },
     blurb: {
@@ -37,6 +47,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'grandma',
+    kind: 'game',
     name: "Grandma's Wi-Fi Password",
     tagline: { en: 'A conversational deduction game where the AI is the haystack', zh: '对话推理解谜游戏：AI 是草堆，密码是那根针' },
     blurb: {
@@ -56,16 +67,17 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'toutoule',
+    kind: 'project',
     name: '投投乐 TouTouLe',
-    tagline: { en: 'AI agent that triages job postings with evidence', zh: '带证据的招聘信息筛选 AI Agent' },
+    tagline: { en: 'AI tool that triages job postings with evidence', zh: '带原文证据的 AI 岗位筛选工具' },
     blurb: {
       en: 'Every extracted field quotes the posting, rules decide eligibility, and errors are measured where they cost an opportunity.',
       zh: '每个抽取字段都引用原文，资格由规则判断，并在出错代价最高的字段上实测错误率。',
     },
     stats: [
       { en: 'Critical hallucinations 20 → 8 of 249', zh: '关键字段幻觉 20 → 8 / 249' },
-      { en: '435 tests', zh: '435 项测试' },
-      { en: 'v0.1.0 live', zh: 'v0.1.0 已上线' },
+      { en: '481 automated tests pass', zh: '481 项自动化测试通过' },
+      { en: 'Live demo', zh: '在线 Demo' },
     ],
     image: '/img/toutoule.png',
     imageWidth: 2560,
@@ -75,23 +87,76 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'gradplanner',
-    name: '毕业去哪儿 Grad Planner',
+    kind: 'project',
+    name: '毕业去哪儿 Grad Trip',
     tagline: { en: 'Group planner for graduation trips: one link from vote to settle-up', zh: '毕业旅行拼团规划：一个链接从投票到分账' },
     blurb: {
-      en: 'Classmates join by link with no sign-up, add budgets, free dates and destination votes, and get a recommended window, an editable itinerary and a minimum-transfer settlement.',
-      zh: '同学点链接即可加入、无需注册，填预算、可出行日期和目的地投票，自动得到推荐出行窗口、可编辑的每日行程和最少转账的结算方案。',
+      en: 'Classmates join by link with no sign-up, add budgets, free dates and destination votes, and get a recommended window, an editable itinerary and a simplified settle-up plan.',
+      zh: '同学点链接即可加入、无需注册，填预算、可出行日期和目的地投票，自动得到推荐出行窗口、可编辑的每日行程和简化转账方案。',
     },
     stats: [
-      { en: '122 unit tests', zh: '122 项单元测试' },
+      { en: '294 unit tests', zh: '294 项单元测试' },
       { en: 'Staged deploys, auto-rollback', zh: '分级发布 + 自动回滚' },
-      { en: 'In active iteration', zh: '持续迭代中' },
+      { en: 'Three iterations · 23 merged PRs', zh: '三轮迭代 · 合并 23 个 PR' },
     ],
     image: '/img/gradplanner.jpg',
     imageWidth: 1920,
-    imageAlt: 'Grad Planner demo trip: decision board with top destination, median budget, days everyone can go and the recommended window',
+    imageAlt: 'Grad Trip demo trip: decision board with top destination, median budget, days everyone can go and the recommended window',
     demo: 'https://grad-trip-planner.netlify.app/',
   },
+  {
+    id: 'room',
+    kind: 'project',
+    name: "像素小屋 Jacky's Room",
+    tagline: { en: 'A pixel-art homepage you can click around', zh: '可以点来点去的像素风个人主页' },
+    blurb: {
+      en: 'My homepage as a pixel-art dusk study: objects open panels on my experience, projects and contact, with a text-only Quick view for anyone in a hurry.',
+      zh: '把个人主页做成像素风黄昏书房：点物件看经历、项目和联系方式，赶时间的人可以直接看纯文字快速浏览。',
+    },
+    stats: [
+      { en: 'Live since 18 Nov 2026', zh: '2026-11-18 上线' },
+      { en: 'Text-only Quick view', zh: '纯文字快速浏览' },
+      { en: 'Chinese & English', zh: '中英双语' },
+    ],
+    image: '/img/room.jpg',
+    imageWidth: 1920,
+    imageAlt: 'A pixel-art study at dusk with a chibi character at a laptop, a cat, bookshelves and a sunset window',
+    demo: 'https://animenzzz128.github.io/jacky-s-room/',
+    repo: 'https://github.com/animenzzz128/jacky-s-room',
+  },
+  {
+    id: 'level0',
+    kind: 'game',
+    name: 'Level 0: Threshold',
+    tagline: { en: 'A Backrooms survival-horror shooter for the browser', zh: '后室题材的网页生存恐怖射击' },
+    blurb: {
+      en: 'Find four tapes in a seeded maze while the level wakes up around you. Three entities need three different answers, and every texture and sound is made in code.',
+      zh: '在按种子生成的迷宫里找齐四盘录像带，关卡会一点点“醒来”。三种敌人要用三种办法对付，所有贴图和声音都由代码生成。',
+    },
+    stats: [
+      { en: 'Playable in the browser', zh: '浏览器直接玩' },
+      { en: '3 entities, 3 counters', zh: '3 种敌人 3 种解法' },
+      { en: 'All art and sound in code', zh: '美术与声音全由代码生成' },
+    ],
+    image: '/img/level0.jpg',
+    imageWidth: 1920,
+    imageAlt: 'Level 0 title screen over a long yellow office corridor',
+    demo: 'https://animenzzz128.github.io/level-0-survive/',
+    repo: 'https://github.com/animenzzz128/level-0-survive',
+  },
 ];
+
+export const PROJECTS = WORKS.filter((p) => p.kind === 'project');
+export const GAMES = WORKS.filter((p) => p.kind === 'game');
+export const SECTIONS = {
+  project: { path: '/projects', works: PROJECTS, all: { en: 'All projects', zh: '全部项目' }, next: { en: 'Next project', zh: '下一个项目' } },
+  game: { path: '/games', works: GAMES, all: { en: 'All games', zh: '全部游戏' }, next: { en: 'Next game', zh: '下一个游戏' } },
+} as const;
+/** Case-study route of a work. */
+export const href = (p: Project) => `${SECTIONS[p.kind].path}/${p.id}`;
+/** The works the opening film hangs on its wall: the first four of the Projects wall (the film was built for four
+ *  frames), so its caption "Four products, each one live" stays true. */
+export const FILM = ['dayweave', 'toutoule', 'gradplanner', 'room'].map((id) => WORKS.find((p) => p.id === id)!);
 
 /** The 960px copy for phones and the home wall, the full-size file for large and high-density screens. */
 export const srcSet = (p: Project) => `${p.image.replace(/\.(\w+)$/, '-960.$1')} 960w, ${p.image} ${p.imageWidth}w`;

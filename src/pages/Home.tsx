@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Intro from '../components/Intro';
 import Gallery from '../components/Gallery';
+import { GAMES, PROJECTS } from '../projects';
 import { ExperienceCard } from '../components/ExperienceCard';
 import { EducationCard } from '../components/EducationCard';
 import { SkillsCard } from '../components/SkillsCard';
@@ -39,12 +40,21 @@ export default function Home() {
           <section className="home-sec">
             <div className="sec-head">
               <div className="eyebrow"><T en="The wall · Projects" zh="作品墙 · 个人项目" /></div>
-              <SectionHeading en="Four products I built end to end, each one live" zh="四个我从零做出来的产品，每个都能直接用" />
+              <SectionHeading en="Products I designed and shipped with AI coding tools" zh="我主导设计、借助 AI 编程工具上线的产品" />
             </div>
           </section>
         </div>
-        {/* The wall runs edge to edge, so it sits outside .wrap (100vw would overflow by the scrollbar width). */}
-        <Gallery />
+        {/* The walls run edge to edge, so they sit outside .wrap (100vw would overflow by the scrollbar width). */}
+        <Gallery works={PROJECTS} label="Projects" />
+        <div className="wrap">
+          <section className="home-sec">
+            <div className="sec-head">
+              <div className="eyebrow"><T en="The wall · Games" zh="作品墙 · 游戏" /></div>
+              <SectionHeading en="Games I directed, built with AI coding tools" zh="我主导、借助 AI 编程工具做出来的游戏" />
+            </div>
+          </section>
+        </div>
+        <Gallery works={GAMES} label="Games" />
         <div className="wrap">
           <section className="home-sec">
             <div className="sec-head">

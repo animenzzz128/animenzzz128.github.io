@@ -6,12 +6,12 @@
   },
   "/projects": {
     "title": "Projects · Jiaqi (Jacky) Yao",
-    "description": "Dayweave, Grandma's Wi-Fi Password, TouTouLe and Grad Planner: four products Jiaqi (Jacky) Yao built end to end.",
+    "description": "Products Jiaqi (Jacky) Yao designed and shipped with AI coding tools: Dayweave, TouTouLe, Grad Trip and Jacky's Room.",
     "image": "/og/home.png"
   },
   "/projects/toutoule": {
     "title": "TouTouLe · Jiaqi (Jacky) Yao",
-    "description": "TouTouLe, an AI agent that triages job postings with evidence. Case study by Jiaqi (Jacky) Yao.",
+    "description": "TouTouLe, an AI tool that triages job postings with evidence. Case study by Jiaqi (Jacky) Yao.",
     "image": "/og/toutoule.png"
   },
   "/projects/dayweave": {
@@ -25,9 +25,29 @@
     "image": "/og/grandma.png"
   },
   "/projects/gradplanner": {
-    "title": "Grad Planner · Jiaqi (Jacky) Yao",
-    "description": "Grad Planner (毕业去哪儿), a group planner for graduation trips: one link from vote to settle-up. Case study by Jiaqi (Jacky) Yao.",
+    "title": "Grad Trip · Jiaqi (Jacky) Yao",
+    "description": "Grad Trip (毕业去哪儿), a group planner for graduation trips: one link from vote to settle-up. Case study by Jiaqi (Jacky) Yao.",
     "image": "/og/gradplanner.png"
+  },
+  "/projects/room": {
+    "title": "Jacky's Room · Jiaqi (Jacky) Yao",
+    "description": "Jacky's Room (像素小屋), a pixel-art personal homepage you can click around. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/room.png"
+  },
+  "/games": {
+    "title": "Games · Jiaqi (Jacky) Yao",
+    "description": "Browser games Jiaqi (Jacky) Yao directed and shipped, built with AI coding tools: Grandma's Wi-Fi Password and Level 0: Threshold.",
+    "image": "/og/games.png"
+  },
+  "/games/grandma": {
+    "title": "Grandma's Wi-Fi Password · Jiaqi (Jacky) Yao",
+    "description": "Grandma's Wi-Fi Password, a conversational deduction game where an LLM-powered Grandma is the haystack. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/grandma.png"
+  },
+  "/games/level0": {
+    "title": "Level 0: Threshold · Jiaqi (Jacky) Yao",
+    "description": "Level 0: Threshold, a Backrooms survival-horror shooter for the browser. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/level0.png"
   },
   "/experience": {
     "title": "Experience · Jiaqi (Jacky) Yao",

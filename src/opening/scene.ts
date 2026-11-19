@@ -18,6 +18,15 @@ export const END = 6.0;
 export const CHAPTERS = [0, 1.5, 4.0, 5.0];
 
 export type OpeningWork = { name: string; line: string; facts: string[]; image: string };
+/**
+ * The page ticket's rows, as fractions of the ticket's height: each row's label (as shown, in the page's language),
+ * its top edge and its label's baseline; `bottom` is the last row's bottom edge and `size` the label font size.
+ * `nums` are the three figures under the rows (left edge as a fraction of the width), `numSize` their font size.
+ */
+export type TicketLayout = {
+  rows: { label: string; top: number; base: number }[]; bottom: number; size: number;
+  nums?: { text: string; left: number; base: number }[]; numSize?: number;
+};
 export type OpeningOptions = {
   canvas: HTMLCanvasElement;
   dark: boolean;
@@ -25,6 +34,8 @@ export type OpeningOptions = {
   works: OpeningWork[];
   /** Where the real ticket sits on the page, so the 3D one can land on it. */
   ticketRect: () => DOMRect | null;
+  /** The real ticket's rows, so the painted one shows the same labels on the same lines. */
+  ticketRows?: () => TicketLayout | null;
 };
 export type Opening = {
   /** Draws the frame for time t (seconds) and returns how opaque the overlay should be. */
@@ -73,12 +84,13 @@ function spacing(g: CanvasRenderingContext2D, px: number) {
   (g as unknown as { letterSpacing: string }).letterSpacing = `${px}px`;
 }
 function wrapText(g: CanvasRenderingContext2D, text: string, x: number, y: number, maxW: number, lh: number, maxLines: number) {
-  const units = /[㐀-鿿]/.test(text) ? Array.from(text) : text.match(/\S+\s*/g) || [];
+  // Chinese breaks between any two characters; a Latin word inside a mixed name ("像素小屋 Jacky's Room") stays whole.
+  const units = text.match(/[　-〿㐀-鿿＀-￯]|[^\s　-〿㐀-鿿＀-￯]+\s*|\s+/g) || [];
   let line = '', n = 0;
   for (const u of units) {
     if (g.measureText(line + u).width > maxW && line) {
       g.fillText(line.trimEnd(), x, y + n * lh);
-      line = u; n++;
+      line = u.trim() ? u : ''; n++;
       if (n >= maxLines) return n;
     } else line += u;
   }
@@ -225,7 +237,7 @@ function placardArt(P: typeof LIGHT, i: number, n: number, w: OpeningWork) {
   g.strokeStyle = P.rule; g.lineWidth = 3; g.strokeRect(1.5, 1.5, 509, 557);
   g.textBaseline = 'alphabetic';
   g.fillStyle = P.brass; g.font = `500 24px ${F_MONO}`; spacing(g, 4);
-  g.fillText(`NO. 0${i + 1} / 0${n}`, 40, 76); spacing(g, 0);
+  g.fillText(`NO. ${String(i + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}`, 40, 76); spacing(g, 0);
   g.fillStyle = P.ink; g.font = `600 50px ${F_DISPLAY}`;
   wrapText(g, w.name, 40, 150, 432, 58, 2);
   const two = g.measureText(w.name).width > 432;
@@ -243,7 +255,14 @@ function placardArt(P: typeof LIGHT, i: number, n: number, w: OpeningWork) {
   }
   return tex(c);
 }
-function ticketArt(P: typeof LIGHT, zh: boolean, aspect: number) {
+/** Used only if the page's ticket cannot be read: its rows as measured at 1440×900. */
+const TICKET_FALLBACK = (zh: boolean): TicketLayout => ({
+  rows: (zh ? ['毕业', '地点', '项目', '游戏'] : ['GRADUATING', 'LOCATION', 'PROJECTS', 'GAMES'])
+    .map((label, i) => { const top = [0.162, 0.24, 0.356, 0.589][i]; return { label, top, base: top + 0.031 }; }),
+  bottom: 0.789,
+  size: 0.0207,
+});
+function ticketArt(P: typeof LIGHT, zh: boolean, aspect: number, layout: TicketLayout | null) {
   const W = 800, H = Math.round(W / aspect), { c, g } = canvas2d(W, H);
   g.fillStyle = P.sheet; g.fillRect(0, 0, W, H);
   g.strokeStyle = P.rule; g.lineWidth = 3; g.strokeRect(1.5, 1.5, W - 3, H - 3);
@@ -256,19 +275,28 @@ function ticketArt(P: typeof LIGHT, zh: boolean, aspect: number) {
   g.fillStyle = '#2f7a52'; g.beginPath(); g.arc(54, 136, 9, 0, Math.PI * 2); g.fill();
   g.fillStyle = P.ink; g.font = `500 26px ${F_MONO}`;
   g.fillText(zh ? '正在寻找全职机会' : 'Open to full-time roles', 82, 145);
-  const rows = zh ? ['毕业', '地点', '在做'] : ['GRADUATING', 'LOCATION', 'BUILDING'];
-  // rows and numbers sit roughly where the page's ticket has them, so the hand-over does not look doubled
-  const top = 150, bottom = Math.round(H * 0.73), step = (bottom - top) / rows.length;
-  rows.forEach((k, i) => {
-    const y = top + step * i;
-    g.fillStyle = P.rule; g.fillRect(44, y, W - 88, 2);
+  // Rows and labels are read from the page's ticket, so the hand-over lines up: the same labels on the same lines.
+  const L = layout && layout.rows.length ? layout : TICKET_FALLBACK(zh);
+  const fs = Math.round(Math.max(16, Math.min(30, L.size * H)));
+  L.rows.forEach((row, i) => {
+    const y = Math.round(row.top * H);
+    g.fillStyle = P.rule;
+    if (i === 0) { for (let x = 44; x < W - 44; x += 14) g.fillRect(x, y, Math.min(7, W - 44 - x), 2); } // the dashed rule under the status line
+    else g.fillRect(44, y, W - 88, 2);
     // Labels only: the values fade in with the real ticket, so the two never show as doubled text.
-    g.fillStyle = P.muted; g.font = `500 21px ${F_MONO}`; spacing(g, 2); g.fillText(k, 44, y + step * 0.6); spacing(g, 0);
+    g.fillStyle = P.muted; g.font = `500 ${fs}px ${F_MONO}`; spacing(g, 2); g.fillText(row.label, 44, Math.round(row.base * H)); spacing(g, 0);
   });
+  const bottom = Math.round(Math.min(0.9, L.bottom) * H);
   g.fillStyle = P.rule; g.fillRect(44, bottom, W - 88, 2);
-  ['+1.5pp', '5,000+', '−60%'].forEach((b, i) => {
-    g.fillStyle = P.ink; g.font = `500 50px ${F_DISPLAY}`; g.fillText(b, 44 + ((W - 88) / 3) * i, bottom + 78);
-  });
+  if (L.nums?.length && L.numSize) {
+    // the figures at the page's own size and place, so they do not double up when the real ticket fades in
+    g.fillStyle = P.ink; g.font = `500 ${Math.round(Math.max(24, Math.min(64, L.numSize * H)))}px ${F_DISPLAY}`;
+    L.nums.forEach((b) => g.fillText(b.text, Math.round(b.left * W), Math.round(b.base * H)));
+  } else {
+    ['+1.5pp', '5,000+', '−60%'].forEach((b, i) => {
+      g.fillStyle = P.ink; g.font = `500 50px ${F_DISPLAY}`; g.fillText(b, 44 + ((W - 88) / 3) * i, bottom + 78);
+    });
+  }
   return tex(c);
 }
 
@@ -371,8 +399,10 @@ export async function createOpening(o: OpeningOptions, cancelled: () => boolean)
   const HOME = new Vector3(FX[0] + 1.43, 1.3, 0.008), HOME_W = 0.5, HOME_H = 0.547;
   const rect0 = o.ticketRect();
   const tAspect = rect0 && rect0.width > 0 && rect0.height > 0 ? rect0.width / rect0.height : 0.95;
+  let rows0: TicketLayout | null = null;
+  try { rows0 = o.ticketRows?.() ?? null; } catch (e) { /* painted from the fallback rows instead */ }
   const label = painted(placardArt(P, 0, n, o.works[0]));
-  const ticket = painted(ticketArt(P, o.zh, Math.max(0.6, Math.min(1.6, tAspect))), 0);
+  const ticket = painted(ticketArt(P, o.zh, Math.max(0.6, Math.min(1.6, tAspect)), rows0), 0);
   const card = new Group(); scene.add(card);
   const unit = keep(new PlaneGeometry(1, 1));
   const cardA = new Mesh(unit, label), cardB = new Mesh(unit, ticket);

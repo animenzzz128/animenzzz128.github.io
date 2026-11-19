@@ -1,5 +1,7 @@
 import ProjectCards from '../components/ProjectCards';
 import T from '../components/T';
+import { Link } from 'react-router-dom';
+import { PROJECTS } from '../projects';
 
 export default function Projects() {
   return (
@@ -7,9 +9,12 @@ export default function Projects() {
       <section>
         <div className="sec-head">
           <div className="eyebrow"><T en="Projects" zh="个人项目" /></div>
-          <h1><T en="Four products I built end to end" zh="四个我从零做出来的产品" /></h1>
+          <h1><T en="Products I designed and shipped with AI coding tools" zh="我主导设计、借助 AI 编程工具上线的产品" /></h1>
         </div>
-        <ProjectCards />
+        <ProjectCards works={PROJECTS} />
+        <div className="links more">
+          <Link to="/games"><T en="Games" zh="游戏作品" /> →</Link>
+        </div>
       </section>
     </div>
   );
