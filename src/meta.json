@@ -36,13 +36,18 @@
   },
   "/games": {
     "title": "Games · Jiaqi (Jacky) Yao",
-    "description": "Browser games Jiaqi (Jacky) Yao directed and shipped, built with AI coding tools: Grandma's Wi-Fi Password and Level 0: Threshold.",
+    "description": "Browser games Jiaqi (Jacky) Yao directed and shipped, built with AI coding tools: Grandma's Wi-Fi Password, Spire of Ashes and Level 0: Threshold.",
     "image": "/og/games.png"
   },
   "/games/grandma": {
     "title": "Grandma's Wi-Fi Password · Jiaqi (Jacky) Yao",
     "description": "Grandma's Wi-Fi Password, a conversational deduction game where an LLM-powered Grandma is the haystack. Case study by Jiaqi (Jacky) Yao.",
     "image": "/og/grandma.png"
+  },
+  "/games/spire": {
+    "title": "Spire of Ashes · Jiaqi (Jacky) Yao",
+    "description": "Spire of Ashes (烬塔), a Slay the Spire–style roguelike deckbuilder tuned with a bot simulator. Case study by Jiaqi (Jacky) Yao.",
+    "image": "/og/spire.png"
   },
   "/games/level0": {
     "title": "Level 0: Threshold · Jiaqi (Jacky) Yao",
