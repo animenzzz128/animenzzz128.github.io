@@ -1,34 +1,36 @@
 import { Brief, Reflection } from '../components/Brief';
 import ProjectPage from '../components/ProjectPage';
 
+// Facts from the toutoule repo, main c043085 (release v0.1.2): README, docs/01_PRD.md, docs/eval/*;
+// `uv run pytest` on 2026-11-18: 481 passed, 2 skipped. README: daily discovery is not built yet.
 export default function TouTouLe() {
   return (
     <ProjectPage id="toutoule">
       <article className="case" id="toutoule">
         <div className="case-meta">
           <strong>投投乐 TouTouLe</strong>
-          <span><span className="en">Founder &amp; product owner, solo</span><span className="zh">发起人兼产品负责人（独立完成）</span></span>
+          <span><span className="en">Product, evals &amp; launch, solo; AI-assisted build</span><span className="zh">产品、评测与上线（独立完成），AI 辅助开发</span></span>
           <span>2026.09 —</span>
           <span>Python · Claude API · Pydantic · Streamlit · SQLite</span>
         </div>
         <div className="case-body">
           <div>
-            <h1><span className="en">An AI agent that triages job postings with evidence</span><span className="zh">带证据的招聘信息筛选 AI Agent</span></h1>
+            <h1><span className="en">An AI tool that triages job postings with evidence</span><span className="zh">带原文证据的 AI 岗位筛选工具</span></h1>
             <p className="case-sub"><span className="en">A scheduled prompt gives you a summary you have to trust. TouTouLe gives you a decision record you can verify, with a measured error rate on the fields where an error costs an opportunity.</span><span className="zh">定时提示词只能给你一份需要信任的摘要；投投乐给你一份可以核验的决策记录，并且在“出错就会错失机会”的字段上有实测错误率。</span></p>
           </div>
           <figure className="shot">
             <img src="/img/toutoule.png" srcSet="/img/toutoule-960.png 960w, /img/toutoule.png 2560w" sizes="(max-width: 720px) 100vw, 880px" width="2560" height="1270" alt="TouTouLe triage form, with a sidebar showing the sample profile in use" />
-            <figcaption><span className="en">The live demo runs on a redacted sample profile. Next in v0.2: a daily watch of about 30 career sites that skips unchanged pages by content hash.</span><span className="zh">在线 Demo 使用脱敏的示例简历。v0.2 正在开发：每天巡检约 30 个招聘官网，按内容哈希跳过未变化的页面。</span></figcaption>
+            <figcaption><span className="en">The live demo runs on a redacted sample profile, and its precomputed example opens without a model call.</span><span className="zh">在线 Demo 使用脱敏的示例简历；预先算好的示例不调用模型也能打开。</span></figcaption>
           </figure>
           <Brief items={[
-            { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'An agent that reads a pasted job posting and pulls out eligibility, application caps, deadline and materials, each with a quote checked against the posting. Nothing is submitted for me.', zh: '一个读 JD 的 Agent：抽取资格、投递上限、截止日期和材料要求，每项都附原文引用并由代码核对。它不会替我投递任何东西。' } },
+            { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'A tool that reads a pasted job posting and pulls out eligibility, application caps, deadline and materials, each with a quote checked against the posting. Nothing is submitted for me.', zh: '一个读 JD 的工具：抽取资格、投递上限、截止日期和材料要求，每项都附原文引用并由代码核对。它不会替我投递任何东西。' } },
             { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'Evidence or nothing, and rules rather than the model decide eligibility.', zh: '没有证据就不算数；资格由规则判断，而不是模型。' } },
             { label: { en: 'Result:', zh: '结果：' }, text: { en: 'Critical hallucinations fell from 20 to 8 of 249 fields in a fresh run (−60%), with critical misses at 6 of 67. The targets it missed are reported, not hidden.', zh: '复跑中关键字段幻觉从 249 个字段中的 20 个降到 8 个（−60%），关键漏检为 6/67；没达标的指标也如实公开。' } },
           ]} />
           <dl className="prm">
             <div><dt><span className="en">Problem</span><span className="zh">问题</span></dt><dd><span className="en">Each posting took 15–20 minutes to check eligibility, application caps, deadline and required materials, and mistakes landed where they cost most.</span><span className="zh">每条 JD 要花 15–20 分钟核对资格、投递上限、截止日期和材料要求，而最容易出错的恰好是代价最高的地方。</span></dd></div>
-            <div><dt><span className="en">My role</span><span className="zh">我的角色</span></dt><dd><span className="en">Everything: PRD, decision log, eval design, labeling, code, deployment.</span><span className="zh">全部独立完成：PRD、决策日志、评测设计、标注、开发和上线。</span></dd></div>
-            <div><dt><span className="en">Outcome</span><span className="zh">结果</span></dt><dd><span className="en">v0.1.0 live. In a fresh run, critical hallucinations fell from 20 to 8 of 249 (−60%) vs. a same-model baseline; critical misses 6 of 67.</span><span className="zh">v0.1.0 已上线。复跑中关键字段幻觉由 20/249 降至 8/249（相对同模型基线下降 60%），关键字段漏检为 6/67。</span></dd></div>
+            <div><dt><span className="en">My role</span><span className="zh">我的角色</span></dt><dd><span className="en">Solo: PRD, decision log, eval design, labeling and launch, with the code written with AI assistance.</span><span className="zh">独立负责 PRD、决策日志、评测设计、标注和上线；代码由 AI 辅助编写。</span></dd></div>
+            <div><dt><span className="en">Outcome</span><span className="zh">结果</span></dt><dd><span className="en">Live demo online. In a fresh run, critical hallucinations fell from 20 to 8 of 249 (−60%) vs. a same-model baseline; critical misses 6 of 67.</span><span className="zh">在线 Demo 已上线。复跑中关键字段幻觉由 20/249 降至 8/249（相对同模型基线下降 60%），关键字段漏检为 6/67。</span></dd></div>
           </dl>
           <div className="split">
             <ul className="decisions">
@@ -38,7 +40,7 @@ export default function TouTouLe() {
               <li><span className="en"><b>Say what it doesn’t do.</b> The README lists the targets it missed and why.</span><span className="zh"><b>写清楚它做不到什么。</b>README 列出了没达标的指标和原因。</span></li>
             </ul>
             <aside className="proof" aria-label="Example of TouTouLe extracting fields with evidence">
-              <div className="proof-head"><span>toutoule · extract</span><span>v0.1.0</span></div>
+              <div className="proof-head"><span>toutoule · extract</span><span>v0.1</span></div>
               <p className="jd">“…Candidates must <mark className="hl">graduate between Dec 2026 and Aug 2027</mark>. <mark className="hl">Each candidate may apply to at most 2 positions</mark>. Applications close <mark className="hl">November 15, 2026</mark>…”</p>
               <ul className="fields">
                 <li><span className="k">grad_window</span><span>2026-12 → 2027-08</span><span className="tag ok">quote ✓</span></li>

@@ -1,18 +1,19 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { PROJECTS } from '../projects';
+import { SECTIONS, WORKS, href } from '../projects';
 import T from './T';
 
-/** Frame for a case study: back link above, the next project below. */
+/** Frame for a case study: back link to its section above, the next work in that section below. */
 export default function ProjectPage({ id, children }: { id: string; children: ReactNode }) {
-  const i = PROJECTS.findIndex((p) => p.id === id);
-  const next = PROJECTS[(i + 1) % PROJECTS.length];
+  const sec = SECTIONS[WORKS.find((p) => p.id === id)!.kind];
+  const i = sec.works.findIndex((p) => p.id === id);
+  const next = sec.works[(i + 1) % sec.works.length];
   return (
     <div className="wrap page">
-      <p className="crumbs"><Link to="/projects">← <T en="All projects" zh="全部项目" /></Link></p>
+      <p className="crumbs"><Link to={sec.path}>← <T {...sec.all} /></Link></p>
       {children}
-      <Link className="next-proj" to={`/projects/${next.id}`}>
-        <span className="eyebrow"><T en="Next project" zh="下一个项目" /></span>
+      <Link className="next-proj" to={href(next)}>
+        <span className="eyebrow"><T {...sec.next} /></span>
         <b>{next.name}</b>
         <span><T {...next.tagline} /> →</span>
       </Link>

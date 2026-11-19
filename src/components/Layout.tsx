@@ -10,6 +10,7 @@ import { scrollToElement, scrollToTop } from '../scroll';
 // Sections of the old single-page site, so links already shared keep working.
 const OLD_ANCHORS: Record<string, string> = {
   '#work': '/projects',
+  '#games': '/games',
   '#toutoule': '/projects/toutoule',
   '#dayweave': '/projects/dayweave',
   '#experience': '/experience',
@@ -51,6 +52,7 @@ export default function Layout() {
           <nav className="nav" aria-label="Pages">
             <div className="nav-links">
               <NavLink to="/projects"><T en="Projects" zh="项目" /></NavLink>
+              <NavLink to="/games"><T en="Games" zh="游戏" /></NavLink>
               <NavLink to="/experience"><T en="Experience" zh="经历" /></NavLink>
               <NavLink to="/about"><T en="About" zh="关于" /></NavLink>
               <NavLink to="/notes"><T en="Notes" zh="笔记" /></NavLink>
