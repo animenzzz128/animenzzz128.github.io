@@ -8,8 +8,8 @@ export default function Dayweave() {
         <div className="case-meta">
           <strong>Dayweave</strong>
           <span><span className="en">Product, UX &amp; AI-assisted development, solo</span><span className="zh">产品、交互与 AI 辅助开发（独立完成）</span></span>
-          <span><span className="en">Oct 2026 — present · v1.5.5</span><span className="zh">2026.10 — 至今 · v1.5.5</span></span>
-          <span>React · TypeScript · Claude API · Node.js · SQLite</span>
+          <span><span className="en">Oct 2026 — present · in daily use</span><span className="zh">2026.10 — 至今 · 每天在用</span></span>
+          <span>React · TypeScript · Node.js · SQLite · Claude API · Fly.io · Google OAuth</span>
         </div>
         <div className="case-body">
           <div>
@@ -20,20 +20,25 @@ export default function Dayweave() {
             <img src="/img/dayweave.jpg" srcSet="/img/dayweave-960.jpg 960w, /img/dayweave.jpg 1920w" sizes="(max-width: 720px) 100vw, 880px" width="1920" height="960" alt="Dayweave Today view: a timeline with calendar events and dashed AI-proposed focus blocks, a sourced daily brief and three priorities" />
             <figcaption><span className="en">The Today view in the public demo. Dashed blocks are AI proposals; they reach the calendar only after approval.</span><span className="zh">公开 Demo 的“今天”页面。虚线框是 AI 建议的时段，只有批准后才会写入日历。</span></figcaption>
           </figure>
+          <figure className="shot">
+            <video className="en" controls preload="none" playsInline poster="/img/dayweave-video-en.jpg" width="1280" height="800" src="/video/dayweave-demo-en.mp4" aria-label="48-second walkthrough of the Dayweave demo: a cited brief, a source outage, planning a day and approving it" />
+            <video className="zh" controls preload="none" playsInline poster="/img/dayweave-video-zh.jpg" width="1280" height="800" src="/video/dayweave-demo-zh.mp4" aria-label="48 秒 Dayweave Demo 演示：带引用的简报、数据源中断、排一天的计划并批准写入" />
+            <figcaption><span className="en">A 48-second walkthrough of the public demo, on fictional data: the cited brief, a source outage, then planning a day and approving it.</span><span className="zh">公开 Demo 的 48 秒演示（虚构数据）：带引用的简报、数据源中断，再到排好一天并批准写入。</span></figcaption>
+          </figure>
           <Brief items={[
             { label: { en: 'What:', zh: '做了什么：' }, text: { en: 'A bilingual planner for graduate students, with cited daily briefs, assignment breakdowns and natural-language scheduling proposals.', zh: '一个面向研究生的中英双语日程助手，提供带引用的每日简报、作业拆解和自然语言排程提议。' } },
             { label: { en: 'Key decision:', zh: '关键决定：' }, text: { en: 'Rules decide what matters and when. The model only explains, breaks down or parses, every output is checked against its evidence, and nothing reaches the calendar without approval of an exact version.', zh: '重要性和时间由规则决定，模型只负责解释、拆解和理解指令；每条输出都要对照证据校验，未经批准的具体版本不会写进日历。' } },
-            { label: { en: 'Result:', zh: '结果：' }, text: { en: '21 synthetic cases, three runs each: 58/63 on first scoring and 61/63 after a validator fix, with the two remaining failures and the rule fallback kept on record.', zh: '21 个虚构场景各运行 3 次：首次评分 58/63，修复评分器后对同批输出复评 61/63；剩下的 2 个失败和规则回退都保留记录。' } },
+            { label: { en: 'Result:', zh: '结果：' }, text: { en: 'I run it on my own coursework: a 7:33 a.m. cloud run collects the day unattended, and 14 approved versions put 85 blocks on my calendar over 16 days in a row. The AI eval re-scored 61/63, and daily use makes no paid model API calls.', zh: '我自己用它管理课业：每天 7:33 云端自动采集，14 个批准版本在连续 16 天里往我的日历写入 85 个时间块；AI 评测复评 61/63，日常使用不调用付费模型 API。' } },
           ]} />
           <dl className="prm">
             <div><dt><span className="en">Problem</span><span className="zh">问题</span></dt><dd><span className="en">Deadlines and requirements were spread across Canvas, syllabi, calendar and email. General AI assistants summarize that well but get the details wrong, and a planner that writes to your calendar on its own is hard to trust.</span><span className="zh">截止日期和作业要求散落在 Canvas、课程大纲、日历和邮件里。通用 AI 助手擅长概括，却常在细节上出错；而一个会自己往日历里写东西的助手，很难让人放心。</span></dd></div>
             <div><dt><span className="en">My role</span><span className="zh">我的角色</span></dt><dd><span className="en">Product, UX and AI-assisted development: roadmap, data contract, decision log, evaluation set, tests and releases.</span><span className="zh">负责产品、交互及 AI 辅助开发：路线图、数据契约、决策日志、评测集、测试和版本发布。</span></dd></div>
-            <div><dt><span className="en">Outcome</span><span className="zh">结果</span></dt><dd><span className="en">A public bilingual demo and open-source repo. The AI eval re-scored 61/63, and I use v1.5.5 on my own coursework.</span><span className="zh">中英双语 Demo 和代码均已公开；AI 评测复评 61/63；我自己在用 v1.5.5 管理课业。</span></dd></div>
+            <div><dt><span className="en">Outcome</span><span className="zh">结果</span></dt><dd><span className="en">A private instance I use every day, plus a public bilingual demo and open-source repo. 85 approved blocks written over 16 consecutive days, the AI eval re-scored 61/63, and $0 API spend in daily use.</span><span className="zh">一个我每天在用的私有实例，加上公开的中英双语 Demo 和开源代码。连续 16 天写入 85 个批准的时间块；AI 评测复评 61/63；日常使用 0 API 花费。</span></dd></div>
           </dl>
           <div className="flow" aria-label="Source, recommendation, approval">
-            <div><small><span className="en">1 · Source</span><span className="zh">1 · 来源</span></small><p><span className="en">Canvas, syllabi, Google Calendar and a read-only Gmail snapshot, each with its collection time and coverage.</span><span className="zh">Canvas、课程大纲、Google 日历和只读的 Gmail 快照，每一项都标明采集时间和覆盖范围。</span></p></div>
+            <div><small><span className="en">1 · Source</span><span className="zh">1 · 来源</span></small><p><span className="en">Canvas, course sites, Google Calendar and school mail, read every morning by an unattended cloud run, each with its collection time and coverage.</span><span className="zh">Canvas、课程网站、Google 日历和学校邮件，每天早上由云端任务自动读取，每一项都标明采集时间和覆盖范围。</span></p></div>
             <div><small><span className="en">2 · Recommendation</span><span className="zh">2 · 建议</span></small><p><span className="en">Rules rank the work and place focus blocks. AI writes the cited brief and breakdowns; anything that fails its checks falls back to rule-written text.</span><span className="zh">规则排序任务、安排专注时段；AI 撰写带引用的简报和作业拆解，校验不通过就退回规则生成的文本。</span></p></div>
-            <div><small><span className="en">3 · Approval</span><span className="zh">3 · 批准</span></small><p><span className="en">Nothing is written to a calendar until you approve an exact, versioned request. The app itself never writes.</span><span className="zh">只有你批准了某个具体版本的请求，才会写入日历；应用本身从不直接写入。</span></p></div>
+            <div><small><span className="en">3 · Approval</span><span className="zh">3 · 批准</span></small><p><span className="en">I adjust the day and approve an exact version. The site then writes it with my own Google consent (calendar events only): it re-reads the calendar, stops on any conflict, creates each block once and reads it back.</span><span className="zh">我调整当天并批准一个确切版本，网站用我本人的 Google 授权（只含日历活动权限）写入：先重新读取日历，有冲突就停，每个块只创建一次并读回核对。</span></p></div>
           </div>
           <ul className="decisions">
             <li><span className="en"><b>AI explains, rules decide.</b> Every brief sentence must cite records that exist, and numbers and times must come from those records. Outputs are generated offline and re-validated in the browser before display.</span><span className="zh"><b>AI 负责解释，规则负责决定。</b>简报的每句话都必须引用真实存在的记录，数字和时间必须来自被引用的记录；输出离线生成，在浏览器里展示前再校验一次。</span></li>

@@ -212,6 +212,7 @@ td.win { font-weight: 500; }
 .caption { font-size: .82rem; color: var(--muted); margin: 8px 0 0; max-width: 70ch; }
 .shot { margin: 0; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: var(--sheet); }
 .shot img { display: block; width: 100%; height: auto; }
+.shot video { display: block; width: 100%; height: auto; background: #000; }
 .shot figcaption { padding: 10px 14px; font-size: .8rem; color: var(--muted); border-top: 1px solid var(--rule); }
 .links { display: flex; flex-wrap: wrap; gap: 10px 18px; font: 500 .9rem/1.4 var(--f-body); }
 .note { font-size: .82rem; color: var(--muted); margin: 0; }
