@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Intro from '../components/Intro';
 import Featured from '../components/Featured';
-import { FEATURED, MORE, href } from '../projects';
+import { GAMES, PROJECTS } from '../projects';
 import { ExperienceCard } from '../components/ExperienceCard';
 import { EducationCard } from '../components/EducationCard';
 import { SkillsCard } from '../components/SkillsCard';
@@ -39,10 +39,19 @@ export default function Home() {
         <div className="wrap">
           <section className="home-sec">
             <div className="sec-head">
-              <div className="eyebrow"><T en="The wall · Selected work" zh="作品墙 · 主打作品" /></div>
-              <SectionHeading en="Three AI products, each live and each with a measured eval" zh="三个 AI 产品，都已上线，都有评测数据" />
+              <div className="eyebrow"><T en="The wall · Projects" zh="作品墙 · 个人项目" /></div>
+              <SectionHeading en="Products I designed and shipped with AI coding tools" zh="我主导设计、借助 AI 编程工具上线的产品" />
             </div>
-            <Featured works={FEATURED} />
+            <Featured works={PROJECTS} />
+            <div className="links more"><Link to="/projects"><T en="All projects" zh="全部项目" /> →</Link></div>
+          </section>
+          <section className="home-sec">
+            <div className="sec-head">
+              <div className="eyebrow"><T en="The wall · Games" zh="作品墙 · 游戏" /></div>
+              <SectionHeading en="Games I directed, built with AI coding tools" zh="我主导、借助 AI 编程工具做出来的游戏" />
+            </div>
+            <Featured works={GAMES} />
+            <div className="links more"><Link to="/games"><T en="All games" zh="全部游戏" /> →</Link></div>
           </section>
           <section className="home-sec">
             <div className="sec-head">
@@ -58,21 +67,6 @@ export default function Home() {
             <div className="links more">
               <Link to="/experience"><T en="Full experience" zh="完整经历" /> →</Link>
               <Link to="/about"><T en="About me" zh="关于我" /> →</Link>
-            </div>
-          </section>
-          <section className="home-sec">
-            <div className="sec-head">
-              <div className="eyebrow"><T en="Side room · More work" zh="侧厅 · 更多作品" /></div>
-              <SectionHeading en="Also built: one more product and three experiments" zh="还做过：一个产品和三个试验作品" />
-            </div>
-            <ul className="more-works">
-              {MORE.map((p) => (
-                <li key={p.id}><Link to={href(p)}><b>{p.name}</b><span><T {...p.tagline} /></span><i aria-hidden="true">→</i></Link></li>
-              ))}
-            </ul>
-            <div className="links more">
-              <Link to="/projects"><T en="All projects" zh="全部项目" /> →</Link>
-              <Link to="/games"><T en="All games" zh="全部游戏" /> →</Link>
             </div>
           </section>
         </div>
