@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { href, srcSet, type Project } from '../projects';
 import T from './T';
 
-/** The home page's lead works, hung side by side so all of them show without dragging. */
+/** One wall of the home page: every work of a section hung side by side, so all of them show without dragging. */
 export default function Featured({ works }: { works: readonly Project[] }) {
   return (
-    <div className="feats">
+    <div className={`feats n${works.length}`}>
       {works.map((p, i) => (
         <article className="feat" key={p.id}>
           <Link to={href(p)} className="frame" tabIndex={-1} aria-hidden="true">
@@ -14,7 +14,7 @@ export default function Featured({ works }: { works: readonly Project[] }) {
           <div className="placard">
             <div className="placard-no">No. {String(i + 1).padStart(2, '0')}<span aria-hidden="true"> / {String(works.length).padStart(2, '0')}</span></div>
             <h3><Link to={href(p)}>{p.name}</Link></h3>
-            <p className="placard-tag"><T {...(p.pitch ?? p.tagline)} /></p>
+            <p className="placard-tag"><T {...p.tagline} /></p>
             <ul className="placard-facts">
               {p.stats.map((s, j) => <li key={j}><T {...s} /></li>)}
             </ul>
