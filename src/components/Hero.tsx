@@ -1,5 +1,5 @@
 import { useRef, type CSSProperties, type PointerEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { PLAY } from './Intro';
 
 export default function Hero() {
   const band = useRef<HTMLDivElement>(null);
@@ -15,9 +15,13 @@ export default function Hero() {
       {/* The title wall: the name is lettered on the gallery's green entrance wall. */}
       <div className="title-wall">
         <span className="tape" aria-hidden="true"></span>
-        <div className="eyebrow"><span className="en">Yale SOM · MMS ’27 · Management Science (STEM)</span><span className="zh">耶鲁大学管理学院 · 管理学硕士 2027 届（STEM）</span></div>
+        <div className="eyebrow"><span className="en">Yale SOM · MMS ’27 · Management Science major (STEM)</span><span className="zh">耶鲁大学管理学院 · 管理学硕士 2027 届 · 管理科学方向（STEM）</span></div>
         <h1>Jiaqi (Jacky) Yao</h1>
         <p className="cn-name">姚嘉骐</p>
+        <p className="lede">
+          <span className="en">Strategy and analytics background, now building AI products: three are live, each with a measured eval.</span>
+          <span className="zh">战略与数据分析出身，现在做 AI 产品：三个已上线，每个都有评测数据。</span>
+        </p>
         <p className="thesis">
           <span className="en">I turn messy problems into decisions you can <mark className="hl" style={{ '--d': '.35s' } as CSSProperties}>check</mark>.</span>
           <span className="zh">我把复杂的问题，变成<mark className="hl" style={{ '--d': '.35s' } as CSSProperties}>可以被核验</mark>的决策。</span>
@@ -35,6 +39,7 @@ export default function Hero() {
         <p className="hero-links">
           <a href="https://www.linkedin.com/in/jiaqi-jacky-yao-94188b25a/" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a href="https://github.com/animenzzz128" target="_blank" rel="noopener">GitHub ↗</a>
+          <button type="button" className="play-opening" onClick={() => window.dispatchEvent(new Event(PLAY))}><span className="en">▶ Watch the opening (6s)</span><span className="zh">▶ 看 6 秒开场</span></button>
         </p>
       </div>
       <div className="hero-side">
@@ -44,13 +49,11 @@ export default function Hero() {
           <dl>
             <div><dt><span className="en">Graduating</span><span className="zh">毕业</span></dt><dd><span className="en">June 2027 · Yale SOM (STEM)</span><span className="zh">2027 年 6 月 · 耶鲁管理学院（STEM）</span></dd></div>
             <div><dt><span className="en">Location</span><span className="zh">地点</span></dt><dd><span className="en">New Haven, CT · open to North America &amp; China</span><span className="zh">美国纽黑文 · 北美与国内均可</span></dd></div>
-            <div><dt><span className="en">Projects</span><span className="zh">项目</span></dt><dd><span className="en"><Link to="/projects/dayweave">Dayweave</Link>, an AI daily planner<br /><Link to="/projects/toutoule">TouTouLe</Link>, an AI job-triage tool<br /><Link to="/projects/gradplanner">Grad Trip</Link>, a group trip planner<br /><Link to="/projects/room">Jacky's Room</Link>, a pixel-art homepage</span><span className="zh"><Link to="/projects/dayweave">Dayweave</Link>，AI 日程助手<br /><Link to="/projects/toutoule">投投乐</Link>，AI 岗位筛选工具<br /><Link to="/projects/gradplanner">毕业去哪儿</Link>，毕业旅行拼团规划<br /><Link to="/projects/room">像素小屋</Link>，像素风个人主页</span></dd></div>
-            <div><dt><span className="en">Games</span><span className="zh">游戏</span></dt><dd><span className="en"><Link to="/games/grandma">Grandma's Wi-Fi Password</Link>, an LLM deduction game<br /><Link to="/games/spire">Spire of Ashes</Link>, a roguelike deckbuilder<br /><Link to="/games/level0">Level 0: Threshold</Link>, a Backrooms survival-horror shooter</span><span className="zh"><Link to="/games/grandma">奶奶的 Wi-Fi 密码</Link>，LLM 推理解谜游戏<br /><Link to="/games/spire">烬塔</Link>，卡牌构筑爬塔游戏<br /><Link to="/games/level0">Level 0: Threshold</Link>，后室题材的生存恐怖射击游戏</span></dd></div>
           </dl>
           <div className="now-nums">
-            <div><b>+1.5pp</b><span className="en">MBP GMV penetration, TikTok Shop</span><span className="zh">TikTok Shop MBP GMV 渗透率</span></div>
+            <div><b>+1.5pp</b><span className="en">GMV penetration of Monetized Business Packages, TikTok Shop SEA</span><span className="zh">TikTok Shop 东南亚商业化资源包 GMV 渗透率</span></div>
             <div><b>5,000+</b><span className="en">merchants &amp; creators, 6 markets</span><span className="zh">商家与达人，覆盖六国</span></div>
-            <div><b>−60%</b><span className="en">AI hallucinations vs. baseline</span><span className="zh">AI 幻觉较基线下降</span></div>
+            <div><b>−60%</b><span className="en">critical AI hallucinations vs. baseline, TouTouLe</span><span className="zh">投投乐关键字段 AI 幻觉，较基线</span></div>
           </div>
         </aside>
         <div className="creds" aria-label="Organizations">

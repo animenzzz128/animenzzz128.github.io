@@ -8,6 +8,8 @@ export type Project = {
   kind: Kind;
   name: string;
   tagline: Bi;
+  /** The one-line case for the work as an AI product, shown on the home page in place of the tagline. */
+  pitch?: Bi;
   blurb: Bi;
   stats: Bi[];
   image: string;
@@ -47,6 +49,7 @@ export const WORKS: Project[] = [
     kind: 'game',
     name: "Grandma's Wi-Fi Password",
     tagline: { en: 'A conversational deduction game where the AI is the haystack', zh: '对话推理解谜游戏：AI 是草堆，密码是那根针' },
+    pitch: { en: 'An LLM character you can question freely, built so it cannot give the answer away', zh: '可以随便追问的 LLM 角色，从设计上就问不出答案' },
     blurb: {
       en: "Ask an LLM-powered Grandma about the old days, look around her 3D living room for proof, and work out the Wi-Fi password from her true but rambling memories. The model only phrases her replies; the facts and rules live in code.",
       zh: '向 LLM 驱动的奶奶打听往事，在她的 3D 客厅里找物证，从真实却绕弯的回忆中推出 Wi-Fi 密码。模型只负责措辞，事实和规则都在代码里。',
@@ -169,6 +172,10 @@ export const SECTIONS = {
   project: { path: '/projects', works: PROJECTS, all: { en: 'All projects', zh: '全部项目' }, next: { en: 'Next project', zh: '下一个项目' } },
   game: { path: '/games', works: GAMES, all: { en: 'All games', zh: '全部游戏' }, next: { en: 'Next game', zh: '下一个游戏' } },
 } as const;
+/** The three works the home page leads with: AI products that are live and have a measured eval. */
+export const FEATURED = ['dayweave', 'toutoule', 'grandma'].map((id) => WORKS.find((p) => p.id === id)!);
+/** Everything else, listed in one compact row group under the background section. */
+export const MORE = WORKS.filter((p) => !FEATURED.includes(p));
 /** Case-study route of a work. */
 export const href = (p: Project) => `${SECTIONS[p.kind].path}/${p.id}`;
 /** The works the opening film hangs on its wall: the first four of the Projects wall (the film was built for four

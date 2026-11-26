@@ -11,8 +11,8 @@ const STEPS: Step[] = [
   { when: { en: '2024', zh: '2024' }, stage: { en: 'Consulting', zh: '咨询' }, title: { en: 'Deloitte Consulting', zh: '德勤咨询' }, text: { en: 'Retail data analysis in Python and Tableau, and 30+ platform pages prototyped in Axure.', zh: '用 Python、Tableau 分析零售数据，用 Axure 设计 30 余页平台原型。' } },
   { when: { en: '2025', zh: '2025' }, stage: { en: 'Strategy & operations', zh: '策略与运营' }, title: { en: 'TikTok Shop', zh: 'TikTok Shop' }, text: { en: 'Business case for automating MBP and campaign analytics across six Southeast Asian markets.', zh: '为 MBP 自动化做商业论证，并负责东南亚六国的活动数据分析。' }, to: '/experience' },
   { when: { en: '2026', zh: '2026' }, stage: { en: 'Management', zh: '管理' }, title: { en: 'UBC and Peking University', zh: 'UBC 与北京大学' }, text: { en: 'Master of Management at UBC, and Doing Business in China at Peking University.', zh: 'UBC 管理学硕士，以及北京大学 DBIC 短期项目。' } },
-  { when: { en: '2026', zh: '2026' }, stage: { en: 'AI products', zh: 'AI 产品' }, title: { en: 'Dayweave and TouTouLe', zh: 'Dayweave 与投投乐' }, text: { en: 'Two AI products I designed and shipped with AI coding tools, each with a public demo and a measured eval.', zh: '主导设计并借助 AI 编程工具上线两个 AI 产品，都有公开 Demo 和可量化的评测。' }, to: '/projects' },
-  { when: { en: 'Now – 2027', zh: '至今 – 2027' }, stage: { en: 'Next', zh: '现在' }, title: { en: 'Yale School of Management', zh: '耶鲁大学管理学院' }, text: { en: 'Master of Management Studies, Management Science (STEM).', zh: '管理学硕士，管理科学方向（STEM）。' } },
+  { when: { en: '2026', zh: '2026' }, stage: { en: 'AI products', zh: 'AI 产品' }, title: { en: 'Dayweave, TouTouLe and Grandma’s Wi-Fi Password', zh: 'Dayweave、投投乐与奶奶的 Wi-Fi 密码' }, text: { en: 'Three AI products I designed and shipped with AI coding tools, each live with a measured eval.', zh: '主导设计并借助 AI 编程工具上线三个 AI 产品，都可在线使用，都有可量化的评测。' }, to: '/projects' },
+  { when: { en: 'Now – 2027', zh: '至今 – 2027' }, stage: { en: 'Next', zh: '现在' }, title: { en: 'Yale School of Management', zh: '耶鲁大学管理学院' }, text: { en: 'Master of Management Studies, Global Business and Society; Management Science major (STEM).', zh: '全球商业与社会管理学硕士（MMS），管理科学方向（STEM）。' } },
 ];
 
 export default function Timeline() {

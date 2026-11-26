@@ -5,7 +5,6 @@ import { cjkFonts } from '../fonts';
 import type { TicketLayout } from '../opening/scene';
 import T from './T';
 
-const KEY = 'intro-seen';
 const CAPTIONS = [
   { en: 'The title wall', zh: '展名墙' },
   { en: 'Four products, each one live', zh: '四个产品，每个都能直接用' },
@@ -19,13 +18,10 @@ function heldAt() {
   return m ? parseFloat(m[1]) : null;
 }
 
-function shouldPlay() {
-  if (heldAt() !== null) return true;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-  // In-app browsers such as WeChat's are where a WebGL film is least reliable and least wanted.
-  if (/MicroMessenger/i.test(navigator.userAgent)) return false;
-  if ((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData) return false;
-  try { if (sessionStorage.getItem(KEY)) return false; } catch (e) { return false; }
+/** The event the hero's "Watch the opening" button sends. */
+export const PLAY = 'play-opening';
+
+function canPlay() {
   try {
     const c = document.createElement('canvas');
     return !!(c.getContext('webgl2') || c.getContext('webgl'));
@@ -76,11 +72,11 @@ function fontsReady() {
  * A six-second opening: the name goes up on the green title wall, the camera rounds the corner to the
  * projects (one frame per entry in projects.ts), steps up to the first one, and its label becomes the ticket in the
  * hero (see opening/scene.ts).
- * Plays once per visit; a click, a key, a scroll or the Skip button ends it. The page underneath is already
- * rendered, and visitors who prefer reduced motion, have no WebGL or are in WeChat never see the film.
+ * It never plays on its own: a visitor reads the page first and starts the film from the hero's "Watch the opening"
+ * button. A click, a key, a scroll or the Skip button ends it.
  */
 export default function Intro() {
-  const [on, setOn] = useState(shouldPlay);
+  const [on, setOn] = useState(() => heldAt() !== null && canPlay());
   const [chapter, setChapter] = useState(0);
   const root = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -88,8 +84,13 @@ export default function Intro() {
   const skipRef = useRef<() => void>(() => {});
 
   useEffect(() => {
+    const play = () => { if (canPlay()) { setChapter(0); setOn(true); } };
+    window.addEventListener(PLAY, play);
+    return () => window.removeEventListener(PLAY, play);
+  }, []);
+
+  useEffect(() => {
     if (!on) return;
-    try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* storage blocked */ }
     const hold = heldAt();
     let dead = false, raf = 0, started = 0, skipAt = 0, last = 0;
     let giveUp: ReturnType<typeof setTimeout> | undefined;
