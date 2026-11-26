@@ -34,9 +34,9 @@ export const WORKS: Project[] = [
       zh: '每天早上自动收集课程、日历和学校邮件，围绕课表和截止日期排好当天，实时复查后只把我批准的版本写进 Google 日历。',
     },
     stats: [
-      { en: '85 blocks written, 16 days in a row', zh: '连续 16 天写入 85 个时间块' },
       { en: 'AI eval 61/63', zh: 'AI 评测 61/63' },
       { en: '$0 API spend in daily use', zh: '日常使用 0 API 花费' },
+      { en: 'Bilingual live demo', zh: '中英双语 Demo' },
     ],
     image: '/img/dayweave.jpg',
     imageWidth: 1920,
